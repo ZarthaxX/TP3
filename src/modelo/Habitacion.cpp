@@ -85,3 +85,52 @@ bool Habitacion::operator==(const Habitacion &) const
 {
 	return false;
 }
+
+void Habitacion::agregarJugadores(const vector<Pos>& jugadores)
+{
+}
+
+void Habitacion::agregarFantasmas(const vector<Pos>& fantasmas)
+{
+}
+
+const set<Pos>& Habitacion::posDisparadasFantasma() const
+{
+	return set<Pos>();
+}
+
+bool Habitacion::estaVivo(bool jug, Pos pos) const
+{
+	return false;
+}
+
+Pos Habitacion::adyacente(Pos pos, Dir dir) const
+{
+	return Pos();
+}
+
+void Habitacion::disparar(bool jug, Pos pos, Dir dir)
+{
+}
+
+void Habitacion::mover(bool jug, Pos pos, Dir dir)
+{
+}
+
+bool Habitacion::esMovValido(Pos pos, Dir dir) const
+{
+	return false;
+}
+
+void Habitacion::resetear()
+{
+}
+
+bool Habitacion::iEsPosValida(Pos pos) const
+{
+	return false;
+}
+
+void Habitacion::agregarObstaculos(const set<Pos>& obstaculos)
+{
+}

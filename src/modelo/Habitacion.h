@@ -19,8 +19,22 @@ public:
 
     bool operator==(const Habitacion&) const;
 
+	//Funciones propias nuestras
+	void agregarJugadores(const vector<Pos>& jugadores);
+	void agregarFantasmas(const vector<Pos>& fantasmas);
+	const set<Pos>& posDisparadasFantasma() const;
+	bool estaVivo(bool jug, Pos pos) const;
+	Pos adyacente(Pos pos, Dir dir) const;
+	void disparar(bool jug, Pos pos, Dir dir);
+	void mover(bool jug, Pos pos, Dir dir);
+	bool esMovValido(Pos pos, Dir dir) const;
+	void resetear();
+	bool iEsPosValida(Pos pos) const;
 private:
-  // Completar
+	void agregarObstaculos(const set<Pos>& obstaculos);
+
+	//Estructura
+
 };
 
 
