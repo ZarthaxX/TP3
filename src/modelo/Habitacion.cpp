@@ -66,3 +66,22 @@ Habitacion string_to_hab(string s) {
 }
 
 // Completar
+
+Habitacion::Habitacion(unsigned int tam, set<Pos> ocupadas)
+{
+}
+
+unsigned int Habitacion::tam() const
+{
+	return 0;
+}
+
+bool Habitacion::ocupado(Pos) const
+{
+	return false;
+}
+
+bool Habitacion::operator==(const Habitacion &) const
+{
+	return false;
+}
