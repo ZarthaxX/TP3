@@ -63,3 +63,18 @@ const list<Fantasma>& ExtremeExorcism::fantasmas() const
 {
 	// TODO: insert return statement here
 }
+
+const list<Evento>& ExtremeExorcism::acciones(string jug) const
+{
+	// TODO: insert return statement here
+}
+
+list<Evento> ExtremeExorcism::inversa(const list<Evento>& acciones)
+{
+	return list<Evento>();
+}
+
+Evento ExtremeExorcism::invertir(const Evento & evento)
+{
+	return Evento();
+}

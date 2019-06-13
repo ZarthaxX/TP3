@@ -38,7 +38,7 @@ public:
   bool jugadorVivo(Jugador j) const;
   //habitacion
   const Habitacion &habitacion() const;
-
+  // ???
   PosYDir posicionJugador(Jugador j) const;
   //jugadores
   const set<Jugador> &jugadores() const;
@@ -48,8 +48,10 @@ public:
   //Agregada por nosotros
   const list<Evento> &acciones(string jug) const;
 private:
-  // Completar
-	
+
+	static list<Evento> inversa(const list<Evento>& acciones);
+	static Evento invertir(const Evento& evento);
+
 // Estructura
 	/*< nombre , pos , dir , vivo , accionesJ , jugadorObs >*/
 	using dataJ = tuple
