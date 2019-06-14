@@ -27,10 +27,10 @@ ostream &operator<<(ostream &os, const PosYDir &pd) {
 }
 
 bool PosYDir::operator==(const PosYDir &o) const {
-  return pos == o.pos and dir == o.dir;
+  return pos == o.pos && dir == o.dir;
 }
 
 bool Evento::operator==(const Evento &o) const {
-  return pos == o.pos and dir == o.dir and dispara == o.dispara;
+  return pos == o.pos && dir == o.dir && dispara == o.dispara;
 }
 

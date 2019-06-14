@@ -1,0 +1,10 @@
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/src/CMakeFiles/ExtremeExorcism_lib.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/src/CMakeFiles/edit_cache.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/CMakeFiles/gtest.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/CMakeFiles/gtest_main.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/CMakeFiles/correrTests.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
+C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir

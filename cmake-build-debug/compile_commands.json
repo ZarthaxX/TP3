@@ -1,0 +1,62 @@
+[
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\Contexto.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\Contexto.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/Contexto.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\ExtremeExorcism.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\ExtremeExorcism.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/ExtremeExorcism.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\Habitacion.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\Habitacion.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/Habitacion.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\TiposJuego.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\TiposJuego.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/TiposJuego.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\localizadores\\localizador.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\localizadores\\localizador.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\localizadores\\localizador_aleatorio.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\localizadores\\localizador_aleatorio.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/src",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\ExtremeExorcism_lib.dir\\modelo\\localizadores\\localizador_estatico.cpp.obj /FdCMakeFiles\\ExtremeExorcism_lib.dir\\ExtremeExorcism_lib.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\src\\modelo\\localizadores\\localizador_estatico.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_estatico.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\gtest.dir\\gtest-1.8.1\\gtest-all.cc.obj /FdCMakeFiles\\gtest.dir\\gtest.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\tests\\gtest-1.8.1\\gtest-all.cc",
+  "file": "C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest-all.cc"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\gtest_main.dir\\gtest-1.8.1\\gtest_main.cc.obj /FdCMakeFiles\\gtest_main.dir\\gtest_main.pdb /FS -c C:\\Users\\tomas\\Desktop\\tp3\\tests\\gtest-1.8.1\\gtest_main.cc",
+  "file": "C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest_main.cc"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\correrTests.dir\\ee_tests.cpp.obj /FdCMakeFiles\\correrTests.dir\\ /FS -c C:\\Users\\tomas\\Desktop\\tp3\\tests\\ee_tests.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/tests/ee_tests.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\correrTests.dir\\hab_tests.cpp.obj /FdCMakeFiles\\correrTests.dir\\ /FS -c C:\\Users\\tomas\\Desktop\\tp3\\tests\\hab_tests.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/tests/hab_tests.cpp"
+},
+{
+  "directory": "C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1416~1.270\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\Users\\tomas\\Desktop\\tp3\\src  /DWIN32 /D_WINDOWS /W3 /GR /EHsc -pthread -std=gnu++11 -ggdb3 -g /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\correrTests.dir\\estado\\EstadoJuego.cpp.obj /FdCMakeFiles\\correrTests.dir\\ /FS -c C:\\Users\\tomas\\Desktop\\tp3\\tests\\estado\\EstadoJuego.cpp",
+  "file": "C:/Users/tomas/Desktop/tp3/tests/estado/EstadoJuego.cpp"
+}
+]

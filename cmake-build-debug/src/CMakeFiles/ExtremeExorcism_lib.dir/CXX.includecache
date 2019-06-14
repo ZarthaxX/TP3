@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/modelo/Habitacion.h
+iostream
+-
+set
+-
+vector
+-
+TiposJuego.h
+../src/modelo/TiposJuego.h
+
+../src/modelo/TiposJuego.h
+string
+-
+list
+-
+utility
+-
+iostream
+-
+
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador.h
+modelo/Habitacion.h
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/modelo/Habitacion.h
+list
+-
+map
+-
+set
+-
+
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.cpp
+localizador_aleatorio.h
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.h
+
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.h
+localizador.h
+C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador.h
+

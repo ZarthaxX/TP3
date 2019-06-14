@@ -24,7 +24,7 @@ LocalizadorAleatorio::localizar_jugadores(const set<Jugador> &jugadores,
   list<Pos> pos_validas;
   for (int i = 0; i < hab.tam(); i++) {
     for (int j = 0; j < hab.tam(); j++) {
-      if (not hab.ocupado(Pos(i, j))) {
+      if (! hab.ocupado(Pos(i, j))) {
         pos_validas.push_back(Pos(i, j));
       }
     }

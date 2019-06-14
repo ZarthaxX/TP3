@@ -3,6 +3,7 @@
 #include <istream>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 Habitacion string_to_hab(std::istream& is) {
     int row = 0;

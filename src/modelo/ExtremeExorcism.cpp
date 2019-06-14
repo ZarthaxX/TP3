@@ -2,7 +2,7 @@
 
 // Completar
 
-ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f_init, list<Accion> acciones_fantasma, Contexto * ctx)
+ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f_init, list<Accion> acciones_fantasma, Contexto * ctx) : _habitacion(h)
 {
 }
 
@@ -26,7 +26,7 @@ list<PosYDir> ExtremeExorcism::posicionFantasmas() const
 
 PosYDir ExtremeExorcism::posicionEspecial() const
 {
-	return PosYDir();
+	return PosYDir(Pos(),Dir());
 }
 
 list<PosYDir> ExtremeExorcism::disparosFantasmas() const
@@ -46,27 +46,31 @@ bool ExtremeExorcism::jugadorVivo(Jugador j) const
 
 const Habitacion & ExtremeExorcism::habitacion() const
 {
-	// TODO: insert return statement here
+	return _habitacion;
 }
 
 PosYDir ExtremeExorcism::posicionJugador(Jugador j) const
 {
-	return PosYDir();
+	return PosYDir(Pos(),Dir());
 }
 
 const set<Jugador>& ExtremeExorcism::jugadores() const
 {
-	// TODO: insert return statement here
+    set<Jugador> v;
+    for(auto it = jugadoresPorNombre.begin(); it != jugadoresPorNombre.end(); ++it) {
+        v.insert(it->first);
+    }
+	return v;
 }
 
 const list<Fantasma>& ExtremeExorcism::fantasmas() const
 {
-	// TODO: insert return statement here
+	return accionesF;
 }
 
 const list<Evento>& ExtremeExorcism::acciones(string jug) const
 {
-	// TODO: insert return statement here
+	return *jugadoresPorNombre.at(jug)->accionesJ;
 }
 
 list<Evento> ExtremeExorcism::inversa(const list<Evento>& acciones)
@@ -76,5 +80,5 @@ list<Evento> ExtremeExorcism::inversa(const list<Evento>& acciones)
 
 Evento ExtremeExorcism::invertir(const Evento & evento)
 {
-	return Evento();
+	return Evento(Pos(),Dir(),false);
 }

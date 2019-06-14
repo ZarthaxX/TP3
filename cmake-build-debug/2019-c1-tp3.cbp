@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="2019-c1-tp3"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\tests\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ExtremeExorcism_lib">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/src/ExtremeExorcism_lib.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/tomas/Desktop/tp3/src"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 ExtremeExorcism_lib"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ExtremeExorcism_lib/fast">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/src/ExtremeExorcism_lib.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/tomas/Desktop/tp3/src"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 ExtremeExorcism_lib/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\src\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/gtest.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 gtest"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/gtest.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 gtest/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/gtest_main.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 gtest_main"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main/fast">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests/gtest_main.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="correrTests">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/bin/correrTests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/tomas/Desktop/tp3/src"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 correrTests"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="correrTests/fast">
+				<Option output="C:/Users/tomas/Desktop/tp3/cmake-build-debug/bin/correrTests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/tomas/Desktop/tp3/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/tomas/Desktop/tp3/src"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 correrTests/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\tomas\Desktop\tp3\cmake-build-debug\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/Contexto.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/Contexto.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/ExtremeExorcism.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/ExtremeExorcism.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/Habitacion.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/Habitacion.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/TiposJuego.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/TiposJuego.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_aleatorio.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_estatico.cpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modelo/localizadores/localizador_estatico.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modulos_basicos/linear_map.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modulos_basicos/linear_map.hpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modulos_basicos/linear_set.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modulos_basicos/linear_set.hpp">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/modulos_basicos/linear_set_iterators.h">
+			<Option target="ExtremeExorcism_lib"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/ee_tests.cpp">
+			<Option target="correrTests"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/estado/EstadoJuego.cpp">
+			<Option target="correrTests"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/estado/EstadoJuego.h">
+			<Option target="correrTests"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest_main.cc">
+			<Option target="gtest_main"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/hab_tests.cpp">
+			<Option target="correrTests"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/tomas/Desktop/tp3/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
