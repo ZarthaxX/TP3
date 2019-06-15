@@ -3,7 +3,6 @@
 #include <istream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 
 Habitacion string_to_hab(std::istream& is) {
     int row = 0;
@@ -66,72 +65,127 @@ Habitacion string_to_hab(string s) {
     return Habitacion(height, occupied);
 }
 
+Habitacion::Habitacion(unsigned int tam): tamano(tam){
+    tablero = new Celda* [tam];
+    for(int i = 0;i < tam;i++){
+        tablero[i] = new Celda [tam];
+    }
+}
+
+Habitacion::~Habitacion() {
+    for(int i = 0;i < tamano;i++){
+        delete[] tablero[i];
+    }
+    delete[] tablero;
+}
+
+void Habitacion::agregarJugadores(vector<Pos> jug) {
+    for(Pos pos:jug){
+        tablero[pos.first][pos.second].jugadores++;
+    }
+}
+
+void Habitacion::agregarFantasmas(vector<Pos> fan){
+    for(Pos pos:fan){
+        tablero[pos.first][pos.second].fantasmas++;
+    }
+}
+
+void Habitacion::agregarObstaculos(vector<Pos> obs){
+    for(Pos pos:obs){
+        tablero[pos.first][pos.second].obstaculo = true;
+    }
+}
+
+bool Habitacion::ocupado(Pos pos) const {
+    return tablero[pos.first][pos.second].obstaculo;
+}
+
+const linear_set<Pos>& Habitacion::posDisparadasFantasma() {
+    return  pos_disparadas;
+}
+
+bool Habitacion::estaVivo(bool jug, Pos pos) {
+    if(jug){
+        return tablero[pos.first][pos.second].jugadores == 0;
+    } else {
+        return tablero[pos.first][pos.second].fantasmas == 0;
+    }
+}
+
+Pos Habitacion::adyacente(Pos pos, Dir dir) {
+    switch (dir){
+        case ARRIBA:
+            return Pos(pos.first,pos.second + 1);
+        case ABAJO:
+            return Pos(pos.first,pos.second - 1);
+        case DERECHA:
+            return Pos(pos.first + 1,pos.second);
+        case IZQUIERDA:
+            return Pos(pos.first - 1,pos.second);
+    }
+}
+
+void Habitacion::disparar(bool jug, Pos pos, Dir dir) {
+    Pos pos_actual = adyacente(pos,dir);
+    while(iEsPosValida(pos_actual)){
+        if(jug){
+            tablero[pos_actual.first][pos_actual.second].fantasmas = 0;
+        } else{
+            if(not(tablero[pos_actual.first][pos_actual.second].disparada)){
+                pos_disparadas.insert(pos_actual);
+                tablero[pos_actual.first][pos_actual.second].disparada = true;
+            }
+            tablero[pos_actual.first][pos_actual.second].jugadores = 0;
+        }
+        pos_actual = adyacente(pos_actual,dir);
+    }
+}
+
+void Habitacion::mover(bool jug, Pos pos, Dir dir) {
+    Pos pos_nueva = adyacente(pos,dir);
+    if(jug){
+        tablero[pos.first][pos.second].jugadores--;
+        tablero[pos_nueva.first][pos_nueva.second].jugadores++;
+    } else{
+        tablero[pos.first][pos.second].fantasmas--;
+        tablero[pos_nueva.first][pos_nueva.second].fantasmas++;
+    }
+}
+
+bool Habitacion::esMovValido(Pos pos, Dir dir) {
+    return iEsPosValida(adyacente(pos,dir));
+}
+
+void Habitacion::resetear() {
+    for(int i = 0;i < tamano;i++){
+        for (int j = 0; j < tamano; j++) {
+            tablero[i][j].resetear();
+        }
+    }
+    pos_disparadas = linear_set<Pos>();
+}
+
+unsigned int Habitacion::tam() const {
+    return tamano;
+}
+
+
+Habitacion::Habitacion(unsigned int tam, set<Pos> obs): tamano(tam) {
+    tablero = new Celda* [tam];
+    for(int i = 0;i < tam;i++){
+        tablero[i] = new Celda [tam];
+    }
+    for(Pos p:obs){
+        tablero[p.first][p.second] = Celda(true,0,0,false);
+    }
+}
+
+bool Habitacion::iEsPosValida(Pos pos) {
+    return ((pos.first < tamano) and (pos.first < tamano) and (not(ocupado(pos))));
+}
+
+bool Habitacion::operator==(const Habitacion &) const {
+    return false;
+};
 // Completar
-
-Habitacion::Habitacion(unsigned int tam, set<Pos> ocupadas)
-{
-}
-
-unsigned int Habitacion::tam() const
-{
-	return 0;
-}
-
-bool Habitacion::ocupado(Pos) const
-{
-	return false;
-}
-
-bool Habitacion::operator==(const Habitacion &) const
-{
-	return false;
-}
-
-void Habitacion::agregarJugadores(const vector<Pos>& jugadores)
-{
-}
-
-void Habitacion::agregarFantasmas(const vector<Pos>& fantasmas)
-{
-}
-
-const set<Pos>& Habitacion::posDisparadasFantasma() const
-{
-	return set<Pos>();
-}
-
-bool Habitacion::estaVivo(bool jug, Pos pos) const
-{
-	return false;
-}
-
-Pos Habitacion::adyacente(Pos pos, Dir dir) const
-{
-	return Pos();
-}
-
-void Habitacion::disparar(bool jug, Pos pos, Dir dir)
-{
-}
-
-void Habitacion::mover(bool jug, Pos pos, Dir dir)
-{
-}
-
-bool Habitacion::esMovValido(Pos pos, Dir dir) const
-{
-	return false;
-}
-
-void Habitacion::resetear()
-{
-}
-
-bool Habitacion::iEsPosValida(Pos pos) const
-{
-	return false;
-}
-
-void Habitacion::agregarObstaculos(const set<Pos>& obstaculos)
-{
-}
