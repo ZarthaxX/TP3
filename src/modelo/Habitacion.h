@@ -5,7 +5,7 @@
 #include <set>
 #include <vector>
 #include "TiposJuego.h"
-#include "modulos_basicos/linear_set.h"
+#include "../modulos_basicos/linear_set.h"
 
 using namespace std;
 
@@ -13,6 +13,8 @@ using namespace std;
 class Habitacion {
 public:
     Habitacion(unsigned int tam);
+
+    Habitacion(unsigned int tam,set<Pos> obs);
 
     ~Habitacion();
 
@@ -22,7 +24,7 @@ public:
 
     void agregarObstaculos(vector<Pos> obs);
 
-    bool esObstaculo(Pos pos);
+    bool ocupado(Pos pos) const;
 
     const linear_set<Pos>& posDisparadasFantasma();
 
@@ -49,6 +51,7 @@ private:
       int fantasmas;
       bool disparada;
       Celda():obstaculo(false),jugadores(0),fantasmas(0),disparada(false){};
+      Celda(bool obs,int jug,int fan,bool dis):obstaculo(obs),jugadores(jug),fantasmas(fan),disparada(dis){};
       void resetear(){
           jugadores = 0;
           fantasmas = 0;

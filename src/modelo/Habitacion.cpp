@@ -97,7 +97,7 @@ void Habitacion::agregarObstaculos(vector<Pos> obs){
     }
 }
 
-bool Habitacion::esObstaculo(Pos pos) {
+bool Habitacion::ocupado(Pos pos) const {
     return tablero[pos.first][pos.second].obstaculo;
 }
 
@@ -170,4 +170,22 @@ unsigned int Habitacion::tam() const {
     return tamano;
 }
 
+
+Habitacion::Habitacion(unsigned int tam, set<Pos> obs): tamano(tam) {
+    tablero = new Celda* [tam];
+    for(int i = 0;i < tam;i++){
+        tablero[i] = new Celda [tam];
+    }
+    for(Pos p:obs){
+        tablero[p.first][p.second] = Celda(true,0,0,false);
+    }
+}
+
+bool Habitacion::iEsPosValida(Pos pos) {
+    return ((pos.first < tamano) and (pos.first < tamano) and (not(ocupado(pos))));
+}
+
+bool Habitacion::operator==(const Habitacion &) const {
+    return false;
+};
 // Completar
