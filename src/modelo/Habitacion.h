@@ -5,35 +5,62 @@
 #include <set>
 #include <vector>
 #include "TiposJuego.h"
+#include "modulos_basicos/linear_set.h"
 
 using namespace std;
 
 
 class Habitacion {
 public:
-    Habitacion(unsigned int tam, set<Pos> ocupadas);
+    Habitacion(unsigned int tam);
+
+    ~Habitacion();
+
+    void agregarJugadores(vector<Pos> jug);
+
+    void agregarFantasmas(vector<Pos> fan);
+
+    void agregarObstaculos(vector<Pos> obs);
+
+    bool esObstaculo(Pos pos);
+
+    const linear_set<Pos>& posDisparadasFantasma();
+
+    bool estaVivo(bool jug,Pos pos);
+
+    Pos adyacente(Pos pos,Dir dir);
+
+    void disparar(bool jug, Pos pos, Dir dir);
+
+    void mover(bool jug, Pos pos, Dir dir);
+
+    bool esMovValido(Pos pos,Dir dir);
+
+    void resetear();
 
     unsigned int tam() const;
 
-    bool ocupado(Pos) const;
-
     bool operator==(const Habitacion&) const;
 
-	//Funciones propias nuestras
-	void agregarJugadores(const vector<Pos>& jugadores);
-	void agregarFantasmas(const vector<Pos>& fantasmas);
-	const set<Pos>& posDisparadasFantasma() const;
-	bool estaVivo(bool jug, Pos pos) const;
-	Pos adyacente(Pos pos, Dir dir) const;
-	void disparar(bool jug, Pos pos, Dir dir);
-	void mover(bool jug, Pos pos, Dir dir);
-	bool esMovValido(Pos pos, Dir dir) const;
-	void resetear();
-	bool iEsPosValida(Pos pos) const;
 private:
-	void agregarObstaculos(const set<Pos>& obstaculos);
+  struct Celda{
+      bool obstaculo;
+      int jugadores;
+      int fantasmas;
+      bool disparada;
+      Celda():obstaculo(false),jugadores(0),fantasmas(0),disparada(false){};
+      void resetear(){
+          jugadores = 0;
+          fantasmas = 0;
+          disparada = false;
+      }
+  };
+  Celda** tablero;
+  int tamano;
+  linear_set<Pos> pos_disparadas;
 
-	//Estructura
+  bool iEsPosValida(Pos pos);
+
 
 };
 
