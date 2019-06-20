@@ -18,25 +18,25 @@ public:
 
     ~Habitacion();
 
-    void agregarJugadores(vector<Pos> jug);
+    void agregarJugadores(const vector<Pos>& jug);
 
-    void agregarFantasmas(vector<Pos> fan);
+    void agregarFantasmas(const vector<Pos>& fan);
 
-    void agregarObstaculos(vector<Pos> obs);
+    void agregarObstaculos(const vector<Pos>& obs);
 
     bool ocupado(Pos pos) const;
 
-    const linear_set<Pos>& posDisparadasFantasma();
+    const linear_set<Pos>& posDisparadasFantasma() const;
 
-    bool estaVivo(bool jug,Pos pos);
+    bool estaVivo(bool jug,Pos pos) const;
 
-    Pos adyacente(Pos pos,Dir dir);
+    Pos adyacente(Pos pos,Dir dir) const;
 
     void disparar(bool jug, Pos pos, Dir dir);
 
     void mover(bool jug, Pos pos, Dir dir);
 
-    bool esMovValido(Pos pos,Dir dir);
+    bool esMovValido(Pos pos,Dir dir) const;
 
     void resetear();
 
@@ -62,7 +62,7 @@ private:
   int tamano;
   linear_set<Pos> pos_disparadas;
 
-  bool iEsPosValida(Pos pos);
+  bool iEsPosValida(Pos pos) const;
 
 
 };

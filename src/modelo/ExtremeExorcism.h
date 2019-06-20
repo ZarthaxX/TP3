@@ -62,6 +62,8 @@ public:
 
 private:
 
+	void setearMapa();
+
     static list<Evento> inversa(const list<Evento> &acciones);
 
     static Evento invertir(const Evento &evento);
@@ -69,6 +71,8 @@ private:
 // Estructura
     struct dataJ
     {
+		dataJ(string n, Pos p, Dir d, bool v, list<Evento>* a, list<tuple<string, Pos, Dir>>::iterator j) :
+			nombre(n), pos(p), dir(d), vivo(v), accionesJ(a), jugadorObs(j) {}
         string nombre;
         Pos pos;
         Dir dir;
@@ -78,6 +82,8 @@ private:
     };
 
     struct dataF {
+		dataF(int i, Pos p, Dir d, list<list<Evento>>::iterator aa, list<list<Evento>>::iterator ai, list<list<Evento>>::iterator af) :
+			id(i), pos(p), dir(d), accionActual(aa), accionInicial(ai), accionFinal(af) {}
         int id;
         Pos pos;
         Dir dir;

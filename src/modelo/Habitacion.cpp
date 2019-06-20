@@ -79,20 +79,20 @@ Habitacion::~Habitacion() {
     delete[] tablero;
 }
 
-void Habitacion::agregarJugadores(vector<Pos> jug) {
-    for(Pos pos:jug){
+void Habitacion::agregarJugadores(const vector<Pos>& jug) {
+    for(const Pos& pos:jug){
         tablero[pos.first][pos.second].jugadores++;
     }
 }
 
-void Habitacion::agregarFantasmas(vector<Pos> fan){
-    for(Pos pos:fan){
+void Habitacion::agregarFantasmas(const vector<Pos>& fan){
+    for(const Pos& pos:fan){
         tablero[pos.first][pos.second].fantasmas++;
     }
 }
 
-void Habitacion::agregarObstaculos(vector<Pos> obs){
-    for(Pos pos:obs){
+void Habitacion::agregarObstaculos(const vector<Pos>& obs){
+    for(const Pos& pos:obs){
         tablero[pos.first][pos.second].obstaculo = true;
     }
 }
@@ -101,11 +101,11 @@ bool Habitacion::ocupado(Pos pos) const {
     return tablero[pos.first][pos.second].obstaculo;
 }
 
-const linear_set<Pos>& Habitacion::posDisparadasFantasma() {
+const linear_set<Pos>& Habitacion::posDisparadasFantasma() const {
     return  pos_disparadas;
 }
 
-bool Habitacion::estaVivo(bool jug, Pos pos) {
+bool Habitacion::estaVivo(bool jug, Pos pos) const {
     if(jug){
         return tablero[pos.first][pos.second].jugadores == 0;
     } else {
@@ -113,7 +113,7 @@ bool Habitacion::estaVivo(bool jug, Pos pos) {
     }
 }
 
-Pos Habitacion::adyacente(Pos pos, Dir dir) {
+Pos Habitacion::adyacente(Pos pos, Dir dir) const {
     switch (dir){
         case ARRIBA:
             return Pos(pos.first,pos.second + 1);
@@ -153,7 +153,7 @@ void Habitacion::mover(bool jug, Pos pos, Dir dir) {
     }
 }
 
-bool Habitacion::esMovValido(Pos pos, Dir dir) {
+bool Habitacion::esMovValido(Pos pos, Dir dir) const {
     return iEsPosValida(adyacente(pos,dir));
 }
 
@@ -181,7 +181,7 @@ Habitacion::Habitacion(unsigned int tam, set<Pos> obs): tamano(tam) {
     }
 }
 
-bool Habitacion::iEsPosValida(Pos pos) {
+bool Habitacion::iEsPosValida(Pos pos) const {
     return ((pos.first < tamano) and (pos.first < tamano) and (not(ocupado(pos))));
 }
 
