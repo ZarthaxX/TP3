@@ -106,7 +106,13 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 	}
 	int i = 5;
 	while (i > 0) {
-		accionesFantasma.push_back(Evento((*punteroJugador->accionesJ->begin())->pos, (*punteroJugador->accionesJ->begin())->dir, false));
+		accionesFantasma.push_back(
+			Evento(
+				(*punteroJugador->accionesJ->begin())->pos,
+				(*punteroJugador->accionesJ->begin())->dir,
+				false
+			)
+		);
 		i -= 1;
 	}
 	auto itFantasmas = fantasmas.begin();
