@@ -94,6 +94,8 @@ private:
 
 	static Evento invertir(const Evento &evento);
 
+	int direccion(Accion accion);
+
 	Contexto* ctx;
 
 	Habitacion _habitacion;

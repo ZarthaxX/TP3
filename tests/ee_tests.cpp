@@ -6,7 +6,7 @@
 #include "modelo/localizadores/localizador_estatico.h"
 
 bool en_rango(Pos p, unsigned int tam) {
-  return p.first >= 0 and p.second >= 0 and p.first < tam and p.second < tam;
+  return p.first >= 0 && p.second >= 0 && p.first < tam && p.second < tam;
 }
 
 TEST(EE, ContextoAleatorio) {
@@ -25,7 +25,7 @@ TEST(EE, ContextoAleatorio) {
     set<Pos> pos;
     for (const pair<Jugador, PosYDir> &j_pd : res) { // Son posiciones válidas
       EXPECT_TRUE(en_rango(j_pd.second.pos, 3));
-      EXPECT_TRUE(not h.ocupado(j_pd.second.pos));
+      EXPECT_TRUE(! h.ocupado(j_pd.second.pos));
       pos.insert(j_pd.second.pos);
     }
     EXPECT_EQ(pos.size(), jugadores.size()); // Las posiciones no se repiten
