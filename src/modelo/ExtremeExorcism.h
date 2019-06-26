@@ -62,12 +62,6 @@ public:
 
 private:
 
-	void setearMapa();
-
-    static list<Evento> inversa(const list<Evento> &acciones);
-
-    static Evento invertir(const Evento &evento);
-
 // Estructura
     struct dataJ
     {
@@ -91,6 +85,16 @@ private:
         list<list<Evento>>::iterator accionInicial;
         list<list<Evento>>::iterator accionFinal;
     };
+
+	void setearMapa();
+
+	void siguienteRonda(dataJ* jugador);
+
+	static list<Evento> inversa(const list<Evento> &acciones);
+
+	static Evento invertir(const Evento &evento);
+
+	Contexto* ctx;
 
 	Habitacion _habitacion;
 	map<string, dataJ*>jugadoresPorNombre;

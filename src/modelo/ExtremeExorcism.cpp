@@ -14,6 +14,8 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	jugadoresV(list<dataJ*>()),
 	fantasmasV(list<dataF*>()),
 {	
+	this->ctx = ctx;
+
 	//Adaptar a lo que nos pasan, lista de accion a lista de evento
 	accionesF.push_back({Evento(Pos(),Dir(),false),Evento(Pos(),Dir(),false),Evento(Pos(),Dir(),false)});
 	_fantasmas.push_back(
@@ -55,6 +57,73 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 		jugadoresPorNombre[j] = &_jugadores.back();
 	}
 
+	setearMapa();
+}
+
+void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
+	list<Evento> accionesFantasma = *(punteroJugador->accionesJ);
+	int i = 5;
+	while (i > 0) {
+		accionesFantasma.push_back(Evento(punteroJugador->pos, punteroJugador->dir, false));
+		i -= 1;
+	}
+	list<Evento> accionesInvertidas = inversa(*(punteroJugador->accionesJ));
+	auto itAccionInv = accionesInvertidas.begin();
+	while (itAccionInv != accionesInvertidas.end()) {
+		accionesFantasma.push_back(*itAccionInv);
+		itAccionInv++;
+	}
+	int i = 5;
+	while (i > 0) {
+		accionesFantasma.push_back(Evento((*punteroJugador->accionesJ->begin())->pos, (*punteroJugador->accionesJ->begin())->dir, false));
+		i -= 1;
+	}
+	auto itFantasmas = fantasmas.begin();
+	accionesF.push_back(accionesFantasma);
+	fantasmas.push_back(
+		dataF(
+			fantasmas.size(),
+			punteroJugador->pos,
+			punteroJugador->dir,
+			prev(accionesF.end())->begin(),
+			prev(accionesF.end())->begin(),
+			prev(prev(accionesF.end())->end())
+		)
+	);
+
+	auto itAccionesJ = acccionesJ.begin();
+
+	while (itAccionesJ != accionesJ.end()) {
+		*itAccionesJ = list<Evento>();
+		itAccionesJ++;
+	}
+
+	auto itFan = _fantasmas.begin();
+	fantasmasVivosObs = list<tuple<Pos, Dir>>();
+
+	while (itFan != fantasmas.end()) {
+		itFan->accionActual = itFan->accionInicial;
+		itFan->pos = itFan->accionActual->pos;
+		itFan->pos = itFan->accionActual->dir;
+		itFan->accionActual++;
+		fantasmasV.push_back(&(*itFan));
+		fantasmasVivosObs.push_back({ itFan->pos,itFan->dir });
+		itFan++;
+	}
+
+	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(jugadores, accionesF, h);
+	auto itJug = _jugadores.begin();
+	jugadoresVivosObs = list<tuple<string, Pos, Dir>>();
+
+	while (itJug != _jugadores.end()) {
+		itJug->vivo = true;
+		itJug->pos = pos_dir[itJug->nombre].pos;
+		itJug->dir = pos_dir[itJug->nombre].dir;
+		jugadoresV.push_back(&(*itJug));
+		jugadoresVivosObs.push_back({ itJug->nombre,itJug->pos,itJug->dir });
+		itJug->jugadorObs = prev(jugadoresVivosObs.end());
+		itJug++;
+	}
 	setearMapa();
 }
 

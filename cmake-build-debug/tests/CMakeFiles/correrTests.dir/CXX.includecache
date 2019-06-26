@@ -76,10 +76,6 @@ set
 localizador.h
 ../src/modelo/localizadores/localizador.h
 
-../src/modelo/localizadores/localizador_estatico.h
-modelo/localizadores/localizador.h
-../src/modelo/localizadores/modelo/localizadores/localizador.h
-
 ../src/modulos_basicos/linear_map.h
 list
 -
@@ -115,20 +111,6 @@ linear_set.h
 ../src/modulos_basicos/linear_set.h
 iostream
 -
-
-C:/Users/tomas/Desktop/tp3/tests/ee_tests.cpp
-estado/EstadoJuego.h
-C:/Users/tomas/Desktop/tp3/tests/estado/EstadoJuego.h
-gtest-1.8.1/gtest.h
-C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest.h
-modelo/Contexto.h
-C:/Users/tomas/Desktop/tp3/tests/modelo/Contexto.h
-modelo/ExtremeExorcism.h
-C:/Users/tomas/Desktop/tp3/tests/modelo/ExtremeExorcism.h
-modelo/localizadores/localizador_aleatorio.h
-C:/Users/tomas/Desktop/tp3/tests/modelo/localizadores/localizador_aleatorio.h
-modelo/localizadores/localizador_estatico.h
-C:/Users/tomas/Desktop/tp3/tests/modelo/localizadores/localizador_estatico.h
 
 C:/Users/tomas/Desktop/tp3/tests/estado/EstadoJuego.cpp
 EstadoJuego.h
@@ -303,10 +285,4 @@ iosfwd
 -
 vector
 -
-
-C:/Users/tomas/Desktop/tp3/tests/hab_tests.cpp
-gtest-1.8.1/gtest.h
-C:/Users/tomas/Desktop/tp3/tests/gtest-1.8.1/gtest.h
-modelo/Habitacion.h
-C:/Users/tomas/Desktop/tp3/tests/modelo/Habitacion.h
 
