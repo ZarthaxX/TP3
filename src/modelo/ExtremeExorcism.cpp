@@ -34,13 +34,13 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	accionesF.push_back({ Evento(f_init.pos,f_init.dir,false) });
 
 	for (Accion accion : acciones_fantasma){
-		if (accion == DISPARAR) {
+		if (accion == DISPARAR) {//Dispara
 			accionesF[0].push_back(Evento(fantasma_actual.pos,fantasma_actual.dir,true));
 		}
-		else if (accion == ESPERAR) {
+		else if (accion == ESPERAR) //Espera
 			accionesF[0].push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
 		}
-		else {
+		else {//Se mueve
 			if (h.esMovValido(fantasma_actual.pos, direccion(accion))) {
 				fantasma_actual.pos = h.adyacente(fantasma_actual.pos, direccion(accion));
 			}
