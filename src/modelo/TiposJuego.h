@@ -29,6 +29,7 @@ struct PosYDir {
     Pos pos;
     Dir dir;
 
+    PosYDir();
     PosYDir(Pos, Dir);
 
     bool operator==(const PosYDir& o) const;

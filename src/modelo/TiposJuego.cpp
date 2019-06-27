@@ -12,6 +12,8 @@ PosYDir Evento::pos_y_dir() const {
 
 Evento::Evento(Pos p, Dir d, bool disp) : pos(p), dir(d), dispara(disp) {}
 
+PosYDir::PosYDir() {}
+
 PosYDir::PosYDir(Pos p, Dir d) : pos(p), dir(d) {}
 
 ostream &operator<<(ostream &os, const Evento &e) {
