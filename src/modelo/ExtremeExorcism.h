@@ -76,14 +76,14 @@ private:
     };
 
     struct dataF {
-		dataF(int i, Pos p, Dir d, list<list<Evento>>::iterator aa, list<list<Evento>>::iterator ai, list<list<Evento>>::iterator af) :
+		dataF(int i, Pos p, Dir d, list<Evento>::iterator aa, list<Evento>::iterator ai, list<Evento>::iterator af) :
 			id(i), pos(p), dir(d), accionActual(aa), accionInicial(ai), accionFinal(af) {}
         int id;
         Pos pos;
         Dir dir;
-        list<list<Evento>>::iterator accionActual;
-        list<list<Evento>>::iterator accionInicial;
-        list<list<Evento>>::iterator accionFinal;
+        list<Evento>::iterator accionActual;
+        list<Evento>::iterator accionInicial;
+        list<Evento>::iterator accionFinal;
     };
 
 	void setearMapa();
