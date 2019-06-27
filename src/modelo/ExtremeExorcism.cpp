@@ -2,7 +2,7 @@
 
 // Completar
 
-int ExtremeExorcism::direccion(Accion acccion) {
+Dir ExtremeExorcism::direccion(Accion accion) {
 
 	if (accion == MARRIBA)
 			return ARRIBA;
@@ -17,14 +17,14 @@ int ExtremeExorcism::direccion(Accion acccion) {
 ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f_init, list<Accion> acciones_fantasma, Contexto * ctx) :
 	_habitacion(h),
 	_jugadores(vector<dataJ>()),
-	_fantasmas(vector<dataF>()),
-	jugadoresVivosObs(vector<tuple<string, Pos, Dir>>()),
-	fantasmasVivosObs(vector<tuple<Pos, Dir>>()),
+	_fantasmas(list<dataF>()),
+	jugadoresVivosObs(list<tuple<string, Pos, Dir>>()),
+	fantasmasVivosObs(list<tuple<Pos, Dir>>()),
 	jugadoresPorNombre(map<string, dataJ*>()),
 	accionesF(list<Fantasma>()),
-	accionesJ(list<list<Evento>>()),
+	accionesJ(vector<list<Evento>>()),
 	jugadoresV(list<dataJ*>()),
-	fantasmasV(list<dataF*>()),
+	fantasmasV(list<dataF*>())
 {
 	this->ctx = ctx;
 
@@ -35,10 +35,10 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 
 	for (Accion accion : acciones_fantasma){
 		if (accion == DISPARAR) {//Dispara
-			accionesF[0].push_back(Evento(fantasma_actual.pos,fantasma_actual.dir,true));
+			accionesF.front().push_back(Evento(fantasma_actual.pos,fantasma_actual.dir,true));
 		}
-		else if (accion == ESPERAR) //Espera
-			accionesF[0].push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
+		else if (accion == ESPERAR){ //Espera
+			accionesF.front().push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
 		}
 		else {//Se mueve
 			if (h.esMovValido(fantasma_actual.pos, direccion(accion))) {
