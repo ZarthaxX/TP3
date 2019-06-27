@@ -45,24 +45,24 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 				fantasma_actual.pos = h.adyacente(fantasma_actual.pos, direccion(accion));
 			}
 			fantasma_actual.dir = direccion(accion);
-			accionesF[0].push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
+			accionesF.front().push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
 		}
 	}
 
 	_fantasmas.push_back(
 		dataF(
 			0,
-			accionesF[0][0].pos,
-			accionesF[0][0].dir,
-			next(accionesF[0].begin()),
-			accionesF[0].begin(),
-			prev(accionesF[0].end())
+			accionesF.front().front().pos,
+			accionesF.front().front().dir,
+			next(accionesF.front().begin()),
+			accionesF.front().begin(),
+			prev(accionesF.front().end())
 		)
 	);
 
-	fantasmasVivosObs.push_back({ _fantasmas[0].pos,_fantasmas[0].dir });
+	fantasmasVivosObs.push_back({ _fantasmas.front().pos,_fantasmas.front().dir });
 
-	fantasmasV.push_back(&_fantasmas[0]);
+	fantasmasV.push_back(&_fantasmas.front());
 
 	map<Jugador,PosYDir> pos_dir = ctx->localizar_jugadores(jugadores,accionesF,h);
 	for (Jugador j : jugadores) {
@@ -104,22 +104,22 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 		accionesFantasma.push_back(*itAccionInv);
 		itAccionInv++;
 	}
-	int i = 5;
+	i = 5;
 	while (i > 0) {
 		accionesFantasma.push_back(
 			Evento(
-				(*punteroJugador->accionesJ->begin())->pos,
-				(*punteroJugador->accionesJ->begin())->dir,
+				punteroJugador->accionesJ->begin()->pos,
+				punteroJugador->accionesJ->begin()->dir,
 				false
 			)
 		);
 		i -= 1;
 	}
-	auto itFantasmas = fantasmas.begin();
+	auto itFantasmas = _fantasmas.begin();
 	accionesF.push_back(accionesFantasma);
-	fantasmas.push_back(
+	_fantasmas.push_back(
 		dataF(
-			fantasmas.size(),
+			_fantasmas.size(),
 			punteroJugador->pos,
 			punteroJugador->dir,
 			prev(accionesF.end())->begin(),
@@ -128,7 +128,7 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 		)
 	);
 
-	auto itAccionesJ = acccionesJ.begin();
+	auto itAccionesJ = accionesJ.begin();
 
 	while (itAccionesJ != accionesJ.end()) {
 		*itAccionesJ = list<Evento>();
@@ -138,17 +138,21 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 	auto itFan = _fantasmas.begin();
 	fantasmasVivosObs = list<tuple<Pos, Dir>>();
 
-	while (itFan != fantasmas.end()) {
+	while (itFan != _fantasmas.end()) {
 		itFan->accionActual = itFan->accionInicial;
 		itFan->pos = itFan->accionActual->pos;
-		itFan->pos = itFan->accionActual->dir;
+		itFan->dir = itFan->accionActual->dir;
 		itFan->accionActual++;
 		fantasmasV.push_back(&(*itFan));
 		fantasmasVivosObs.push_back({ itFan->pos,itFan->dir });
 		itFan++;
 	}
 
-	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(jugadores, accionesF, h);
+	set<Jugador> set_jugadores;
+	for(auto it = jugadoresPorNombre.begin(); it != jugadoresPorNombre.end(); ++it) {
+		set_jugadores.insert(it->first);
+	}
+	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(set_jugadores, accionesF, _habitacion);
 	auto itJug = _jugadores.begin();
 	jugadoresVivosObs = list<tuple<string, Pos, Dir>>();
 
