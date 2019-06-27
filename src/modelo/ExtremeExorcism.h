@@ -94,7 +94,7 @@ private:
 
 	static Evento invertir(const Evento &evento);
 
-	int direccion(Accion accion);
+	Dir direccion(Accion accion);
 
 	Contexto* ctx;
 
