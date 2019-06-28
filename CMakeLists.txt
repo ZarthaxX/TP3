@@ -19,3 +19,8 @@ endif (WITH_GUI)
 set_target_properties(correrTests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 file(COPY resources DESTINATION ${CMAKE_BINARY_DIR}/bin)
+
+# Target para correr Valgrind
+add_custom_target(correrValgrind
+        valgrind --leak-check=full -v ./bin/correrTests 2>&1
+        DEPENDS correrTests)
