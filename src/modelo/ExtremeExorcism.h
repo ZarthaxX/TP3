@@ -68,13 +68,13 @@ private:
 // Estructura
     struct dataJ
     {
-		dataJ(string n, Pos p, Dir d, bool v, list<Evento>* a, list<pair<string,PosYDir>>::iterator j) :
+		dataJ(string n, Pos p, Dir d, bool v, vector<list<Evento>>::iterator a, list<pair<string,PosYDir>>::iterator j) :
 			nombre(n), pos(p), dir(d), vivo(v), accionesJ(a), jugadorObs(j) {}
         string nombre;
         Pos pos;
         Dir dir;
         bool vivo;
-        list<Evento> *accionesJ;
+		vector<list<Evento>>::iterator accionesJ;
         list<pair<string, PosYDir>>::iterator jugadorObs;
     };
 
@@ -91,7 +91,7 @@ private:
 
 	void setearMapa();
 
-	void siguienteRonda(dataJ* jugador);
+	void siguienteRonda(vector<dataJ>::iterator jugador);
 
 	static list<Evento> inversa(const list<Evento> &acciones);
 
@@ -103,10 +103,10 @@ private:
 	Contexto* ctx;
 
 	Habitacion _habitacion;
-	map<string, dataJ*>jugadoresPorNombre;
-	list<dataJ*> jugadoresV;
+	map<string, vector<dataJ>::iterator>jugadoresPorNombre;
+	list<vector<dataJ>::iterator> jugadoresV;
 	vector<dataJ> _jugadores;
-	list<dataF*> fantasmasV;
+	list<list<dataF>::iterator> fantasmasV;
 	list<dataF>_fantasmas;
 	list<Fantasma> accionesF;
 	vector<list<Evento>>accionesJ;
