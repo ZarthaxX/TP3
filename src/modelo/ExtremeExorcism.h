@@ -52,7 +52,7 @@ public:
     PosYDir posicionJugador(Jugador j) const;
 
     //jugadores
-    const set<Jugador> &jugadores() const;
+    const set<Jugador> &jugadores() ;
 
     //fantasmas
     const list<Fantasma> &fantasmas() const;
@@ -65,14 +65,14 @@ private:
 // Estructura
     struct dataJ
     {
-		dataJ(string n, Pos p, Dir d, bool v, list<Evento>* a, list<tuple<string, Pos, Dir>>::iterator j) :
+		dataJ(string n, Pos p, Dir d, bool v, list<Evento>* a, list<pair<string,PosYDir>>::iterator j) :
 			nombre(n), pos(p), dir(d), vivo(v), accionesJ(a), jugadorObs(j) {}
         string nombre;
         Pos pos;
         Dir dir;
         bool vivo;
         list<Evento> *accionesJ;
-        list<tuple<string, Pos, Dir>>::iterator jugadorObs;
+        list<pair<string, PosYDir>>::iterator jugadorObs;
     };
 
     struct dataF {
@@ -96,6 +96,7 @@ private:
 
 	Dir direccion(Accion accion);
 
+	set<Jugador>jugadores_set;//Remover despues de implementar el trie
 	Contexto* ctx;
 
 	Habitacion _habitacion;
@@ -106,8 +107,8 @@ private:
 	list<dataF>_fantasmas;
 	list<Fantasma> accionesF;
 	vector<list<Evento>>accionesJ;
-	list<tuple<string, Pos, Dir>>jugadoresVivosObs;
-	list<tuple<Pos, Dir>>fantasmasVivosObs;
+	list<pair<string, PosYDir>>jugadoresVivosObs;
+	list<PosYDir>fantasmasVivosObs;
 };
 
 #endif
