@@ -28,7 +28,6 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	this->ctx = ctx;
 
 //Adaptar a lo que nos pasan, lista de accion a lista de evento
-	accionesF.push_back({Evento(Pos(),Dir(),false),Evento(Pos(),Dir(),false),Evento(Pos(),Dir(),false)});
 	PosYDir fantasma_actual = f_init;
 	accionesF.push_back({ Evento(f_init.pos,f_init.dir,false) });
 
@@ -273,7 +272,7 @@ list<PosYDir> ExtremeExorcism::posicionFantasmas() const
 
 PosYDir ExtremeExorcism::posicionEspecial() const
 {
-	return PosYDir(Pos(),Dir());
+	return fantasmasVivosObs.back();
 }
 
 list<PosYDir> ExtremeExorcism::disparosFantasmas() const
@@ -346,3 +345,4 @@ Evento ExtremeExorcism::invertir(const Evento & evento)
 {
 	return Evento(Pos(),Dir(),false);
 }
+
