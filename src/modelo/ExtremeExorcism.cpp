@@ -305,7 +305,21 @@ PosYDir ExtremeExorcism::posicionEspecial() const
 
 list<PosYDir> ExtremeExorcism::disparosFantasmas() const
 {
-	return list<PosYDir>();
+	list<PosYDir> fan;
+
+	for(auto it = fantasmasV.begin();it != fantasmasV.end();it++){
+		if((*it)->accionActual == (*it)->accionInicial) {
+			if((*it)->accionFinal->dispara == true){
+				fan.push_back(PosYDir((*it)->pos,(*it)->dir));
+			}
+		}else{
+			if(prev((*it)->accionActual)->dispara == true){
+				fan.push_back(PosYDir((*it)->pos,(*it)->dir));
+			}
+		}
+	}
+
+	return fan;
 }
 
 set<Pos> ExtremeExorcism::posicionesDisparadas() const
@@ -325,7 +339,7 @@ const Habitacion & ExtremeExorcism::habitacion() const
 
 PosYDir ExtremeExorcism::posicionJugador(Jugador j) const
 {
-	return PosYDir(Pos(),Dir());
+	return PosYDir(jugadoresPorNombre.at(j)->pos,jugadoresPorNombre.at(j)->dir);
 }
 
 const set<Jugador>& ExtremeExorcism::jugadores()
@@ -369,7 +383,7 @@ list<Evento> ExtremeExorcism::inversa(const list<Evento>& acciones)
 	list<Evento> inv;
 
 	for(Evento accion : acciones){
-		inv.push_back(invertir(accion));
+		inv.push_front(invertir(accion));
 	}
 
 	return inv;
