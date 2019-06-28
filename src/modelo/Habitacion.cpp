@@ -65,11 +65,55 @@ Habitacion string_to_hab(string s) {
     return Habitacion(height, occupied);
 }
 
+void Habitacion::debug() {
+    cerr << "FANTASMAS" << endl;
+    for(int i = 0;i < tamano;i++){
+        for(int x = 0;x < tamano;x++){
+            cerr << tablero[i][x].fantasmas << " ";
+        }
+        cerr << endl;
+    }
+    cerr << "JUGADORES" << endl;
+    for(int i = 0;i < tamano;i++){
+        for(int x = 0;x < tamano;x++){
+            cerr << tablero[i][x].jugadores << " ";
+        }
+        cerr << endl;
+    }
+    cerr << "OBSTACULOS" << endl;
+    for(int i = 0;i < tamano;i++){
+        for(int x = 0;x < tamano;x++){
+            cerr << tablero[i][x].obstaculo << " ";
+        }
+        cerr << endl;
+    }
+    cerr << "DISPARADOS" << endl;
+    for(int i = 0;i < tamano;i++){
+        for(int x = 0;x < tamano;x++){
+            cerr << tablero[i][x].disparada << " ";
+        }
+        cerr << endl;
+    }
+}
+
 Habitacion::Habitacion(unsigned int tam): tamano(tam){
     tablero = new Celda* [tam];
     for(int i = 0;i < tam;i++){
         tablero[i] = new Celda [tam];
     }
+}
+
+Habitacion::Habitacion(const Habitacion& h){
+    tamano = h.tamano;
+    tablero = new Celda* [tamano];
+    for(int i = 0;i < tamano;i++){
+        tablero[i] = new Celda [tamano];
+        for(int x = 0;x < tamano;x++){
+            tablero[i][x] = h.tablero[i][x];
+        }
+    }
+
+
 }
 
 Habitacion::~Habitacion() {
@@ -107,9 +151,9 @@ const linear_set<Pos>& Habitacion::posDisparadasFantasma() const {
 
 bool Habitacion::estaVivo(bool jug, Pos pos) const {
     if(jug){
-        return tablero[pos.first][pos.second].jugadores == 0;
+        return tablero[pos.first][pos.second].jugadores != 0;
     } else {
-        return tablero[pos.first][pos.second].fantasmas == 0;
+        return tablero[pos.first][pos.second].fantasmas != 0;
     }
 }
 
@@ -182,10 +226,19 @@ Habitacion::Habitacion(unsigned int tam, set<Pos> obs): tamano(tam) {
 }
 
 bool Habitacion::iEsPosValida(Pos pos) const {
-    return ((pos.first < tamano) and (pos.first < tamano) and (not(ocupado(pos))));
+    return ((pos.first < tamano) and (pos.second < tamano) and (not(ocupado(pos))));
 }
 
-bool Habitacion::operator==(const Habitacion &) const {
-    return false;
+bool Habitacion::operator==(const Habitacion &h) const {
+    if(tamano != h.tamano)
+        return false;
+
+    for(int i = 0;i < tamano;i++) {
+        for (int x = 0; x < tamano; x++) {
+            if(tablero[i][x].obstaculo != h.tablero[i][x].obstaculo)
+                return false;
+        }
+    }
+    return pos_disparadas == h.pos_disparadas;
 };
 // Completar
