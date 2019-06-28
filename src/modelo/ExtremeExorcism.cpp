@@ -13,13 +13,12 @@ Dir ExtremeExorcism::direccion(Accion accion) {
 	if (accion == MDERECHA)
 		return DERECHA;
 }
-
 ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f_init, list<Accion> acciones_fantasma, Contexto * ctx) :
 	_habitacion(h),
 	_jugadores(vector<dataJ>()),
 	_fantasmas(list<dataF>()),
-	jugadoresVivosObs(list<tuple<string, Pos, Dir>>()),
-	fantasmasVivosObs(list<tuple<Pos, Dir>>()),
+	jugadoresVivosObs(list<pair<string, PosYDir>>()),
+	fantasmasVivosObs(list<PosYDir>()),
 	jugadoresPorNombre(map<string, dataJ*>()),
 	accionesF(list<Fantasma>()),
 	accionesJ(vector<list<Evento>>()),
@@ -56,7 +55,7 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 			accionesF.front().front().dir,
 			next(accionesF.front().begin()),
 			accionesF.front().begin(),
-			prev(accionesF.front().end())
+			accionesF.front().end()
 		)
 	);
 
@@ -69,8 +68,8 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 		jugadoresVivosObs.push_back(
 			{
 				j,
-				pos_dir[j].pos,
-				pos_dir[j].dir 
+				PosYDir(pos_dir[j].pos,
+				pos_dir[j].dir)
 			}
 		);
 		accionesJ.push_back(list<Evento>());
@@ -136,7 +135,7 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 	}
 
 	auto itFan = _fantasmas.begin();
-	fantasmasVivosObs = list<tuple<Pos, Dir>>();
+	fantasmasVivosObs = list<PosYDir>();
 
 	while (itFan != _fantasmas.end()) {
 		itFan->accionActual = itFan->accionInicial;
@@ -154,14 +153,14 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 	}
 	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(set_jugadores, accionesF, _habitacion);
 	auto itJug = _jugadores.begin();
-	jugadoresVivosObs = list<tuple<string, Pos, Dir>>();
+	jugadoresVivosObs = list<pair<string, PosYDir>>();
 
 	while (itJug != _jugadores.end()) {
 		itJug->vivo = true;
 		itJug->pos = pos_dir[itJug->nombre].pos;
 		itJug->dir = pos_dir[itJug->nombre].dir;
 		jugadoresV.push_back(&(*itJug));
-		jugadoresVivosObs.push_back({ itJug->nombre,itJug->pos,itJug->dir });
+		jugadoresVivosObs.push_back({ itJug->nombre,PosYDir(itJug->pos,itJug->dir)});
 		itJug->jugadorObs = prev(jugadoresVivosObs.end());
 		itJug++;
 	}
@@ -178,12 +177,12 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a)
 
 list<pair<Jugador, PosYDir>> ExtremeExorcism::posicionJugadores() const
 {
-	return list<pair<Jugador, PosYDir>>();
+    return jugadoresVivosObs;
 }
 
 list<PosYDir> ExtremeExorcism::posicionFantasmas() const
 {
-	return list<PosYDir>();
+    return fantasmasVivosObs;
 }
 
 PosYDir ExtremeExorcism::posicionEspecial() const
@@ -203,7 +202,7 @@ set<Pos> ExtremeExorcism::posicionesDisparadas() const
 
 bool ExtremeExorcism::jugadorVivo(Jugador j) const
 {
-	return false;
+	return jugadoresPorNombre.at(j)->vivo;
 }
 
 const Habitacion & ExtremeExorcism::habitacion() const
@@ -216,13 +215,13 @@ PosYDir ExtremeExorcism::posicionJugador(Jugador j) const
 	return PosYDir(Pos(),Dir());
 }
 
-const set<Jugador>& ExtremeExorcism::jugadores() const
+const set<Jugador>& ExtremeExorcism::jugadores()
 {
-    set<Jugador> v;
+    jugadores_set.clear();
     for(auto it = jugadoresPorNombre.begin(); it != jugadoresPorNombre.end(); ++it) {
-        v.insert(it->first);
+        jugadores_set.insert(it->first);
     }
-	return v;
+	return jugadores_set;
 }
 
 const list<Fantasma>& ExtremeExorcism::fantasmas() const
