@@ -242,7 +242,7 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
                 if(_habitacion.estaVivo(false, (*itFanV)->pos)){
                     if((*itFanV)->id == _fantasmas.size()-1){
                         siguienteRonda(punteroJ);
-                        return
+                        return;
                     }
                     list<dataF*>::iterator copia = itFanV;
                     itFanV++;
