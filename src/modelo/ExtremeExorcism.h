@@ -23,7 +23,10 @@ public:
 
     //pasar
     void pasar();
-
+    
+    //auxiliar para ejecutar pasar y ejecutar accion
+    void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ);
+	
     //step
     void ejecutarAccion(Jugador j, Accion a);
 
