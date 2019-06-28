@@ -19,11 +19,11 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	_fantasmas(list<dataF>()),
 	jugadoresVivosObs(list<pair<string, PosYDir>>()),
 	fantasmasVivosObs(list<PosYDir>()),
-	jugadoresPorNombre(map<string, dataJ*>()),
+	jugadoresPorNombre(map<string, vector<dataJ>::iterator>()),
 	accionesF(list<Fantasma>()),
 	accionesJ(vector<list<Evento>>()),
-	jugadoresV(list<dataJ*>()),
-	fantasmasV(list<dataF*>())
+	jugadoresV(list<vector<dataJ>::iterator>()),
+	fantasmasV(list<list<dataF>::iterator>())
 {
 	this->ctx = ctx;
 
@@ -61,7 +61,7 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
     }
     i = 5;
     while (i > 0) {
-        accionesF.front().push_back(Evento(f_init.pos,f_init.dir,false));
+        accionesF.front().push_back(accionesF.front().back());
         i -= 1;
     }
 
@@ -78,9 +78,10 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 
 	fantasmasVivosObs.push_back({ _fantasmas.front().pos,_fantasmas.front().dir });
 
-	fantasmasV.push_back(&_fantasmas.front());
+	fantasmasV.push_back(_fantasmas.begin());
 
 	map<Jugador,PosYDir> pos_dir = ctx->localizar_jugadores(jugadores,accionesF,h);
+
 	for (Jugador j : jugadores) {
 		jugadoresVivosObs.push_back(
 			{
@@ -90,24 +91,33 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 			}
 		);
 		accionesJ.push_back(list<Evento>());
-		_jugadores.push_back(
+		_jugadores.emplace_back(
 			dataJ(
 				j,
 				pos_dir[j].pos,
 				pos_dir[j].dir,
 				true,
-				&accionesJ.back(),
-				prev(jugadoresVivosObs.end())
+				vector<list<Evento>>::iterator(),//prev(accionesJ.end()),
+				list<pair<string, PosYDir>>::iterator()//prev(jugadoresVivosObs.end())
 			)
 		);
-		jugadoresV.push_back(&_jugadores.back());
-		jugadoresPorNombre[j] = &_jugadores.back();
+	}
+
+	auto it2 = accionesJ.begin();
+	auto it3 = jugadoresVivosObs.begin();
+
+	for(auto it = _jugadores.begin();it != _jugadores.end();it++,it2++,it3++){
+
+		jugadoresV.push_back(it);
+		jugadoresPorNombre[it->nombre] = it;
+		it->accionesJ = it2;
+		it->jugadorObs = it3;
 	}
 
 	setearMapa();
 }
 
-void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
+void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 	list<Evento> accionesFantasma = *(punteroJugador->accionesJ);
 	int i = 5;
 	while (i > 0) {
@@ -159,7 +169,7 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 		itFan->pos = itFan->accionActual->pos;
 		itFan->dir = itFan->accionActual->dir;
 		itFan->accionActual++;
-		fantasmasV.push_back(&(*itFan));
+		fantasmasV.push_back(itFan);
 		fantasmasVivosObs.push_back({ itFan->pos,itFan->dir });
 		itFan++;
 	}
@@ -176,7 +186,7 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 		itJug->vivo = true;
 		itJug->pos = pos_dir[itJug->nombre].pos;
 		itJug->dir = pos_dir[itJug->nombre].dir;
-		jugadoresV.push_back(&(*itJug));
+		jugadoresV.push_back(itJug);
 		jugadoresVivosObs.push_back({ itJug->nombre,PosYDir(itJug->pos,itJug->dir)});
 		itJug->jugadorObs = prev(jugadoresVivosObs.end());
 		itJug++;
@@ -187,6 +197,7 @@ void ExtremeExorcism::pasar() {
 	accionarDemasJugadoresYFantasmas(true, "");
 }
 void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ){
+
 	for (auto p : jugadoresV){
 		if(p->nombre != nombreJ || pasarJug == true){
 			p->accionesJ->push_back(Evento(p->pos,p->dir,false));
@@ -224,21 +235,22 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 	while(itJugV != jugadoresV.end()){
 	    if(!_habitacion.estaVivo(true, (*itJugV)->pos)){
             (*itJugV)->vivo = false;
-            auto copia = itJugV;
-            itJugV++;
-            jugadoresVivosObs.erase((*copia)->jugadorObs);
-            jugadoresV.erase(copia);
+            jugadoresVivosObs.erase((*itJugV)->jugadorObs);
+            itJugV = jugadoresV.erase(itJugV);
 	    }else{
             (*((*itJugV)->jugadorObs)).second.dir=(*itJugV) -> dir ; // accedo a la tercera posicion de la tupla para cambiar su direccion en jugadores Observable
             (*((*itJugV)->jugadorObs)).second.pos=(*itJugV) -> pos ; // accedo a la segunda posicion de la tupla para cambiar su posicion en jugadores vivos Observables
+
+			itJugV++;
 	    }
 	}
 
 
 }
 void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
-    dataJ* punteroJ = jugadoresPorNombre[j]; //significado(jugadoresPorNombre, j)
-    if(a == MABAJO || a== MARRIBA || a== MDERECHA || a==MIZQUIERDA) {
+    vector<dataJ>::iterator punteroJ = jugadoresPorNombre[j]; //significado(jugadoresPorNombre, j)
+
+    if(a == MABAJO || a == MARRIBA || a == MDERECHA || a== MIZQUIERDA) {
 
         if (_habitacion.esMovValido(punteroJ->pos, direccion(a))) {
             _habitacion.mover(true, punteroJ->pos, direccion(a));
@@ -254,18 +266,16 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
 
     } else{
         if(a==DISPARAR){
-            _habitacion.disparar(true, punteroJ-> pos, punteroJ->dir);
-            list<dataF*>::iterator itFanV = fantasmasV.begin();
+            auto itFanV = fantasmasV.begin();
             while(itFanV != fantasmasV.end()){
                 if(_habitacion.estaVivo(false, (*itFanV)->pos)){
                     if((*itFanV)->id == _fantasmas.size()-1){
                         siguienteRonda(punteroJ);
                         return;
                     }
-                    list<dataF*>::iterator copia = itFanV;
+                    auto copia = itFanV;
                     itFanV++;
                     fantasmasV.erase(copia);
-
                 }
             }
             (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
@@ -356,11 +366,28 @@ void ExtremeExorcism::setearMapa() {
 
 list<Evento> ExtremeExorcism::inversa(const list<Evento>& acciones)
 {
-	return list<Evento>();
+	list<Evento> inv;
+
+	for(Evento accion : acciones){
+		inv.push_back(invertir(accion));
+	}
+
+	return inv;
 }
 
 Evento ExtremeExorcism::invertir(const Evento & evento)
 {
-	return Evento(Pos(),Dir(),false);
+	Evento evento_inv = evento;
+
+	if(evento.dir == ARRIBA)
+		evento_inv.dir = ABAJO;
+	if(evento.dir == ABAJO)
+		evento_inv.dir = ARRIBA;
+	if(evento.dir == DERECHA)
+		evento_inv.dir = IZQUIERDA;
+	if(evento.dir == IZQUIERDA)
+		evento_inv.dir = DERECHA;
+
+	return evento_inv;
 }
 
