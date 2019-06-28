@@ -16,6 +16,8 @@ public:
 
     Habitacion(unsigned int tam,set<Pos> obs);
 
+    Habitacion(const Habitacion& h);
+
     ~Habitacion();
 
     void agregarJugadores(const vector<Pos>& jug);
@@ -44,25 +46,29 @@ public:
 
     bool operator==(const Habitacion&) const;
 
+    void debug();
 private:
-  struct Celda{
-      bool obstaculo;
-      int jugadores;
-      int fantasmas;
-      bool disparada;
-      Celda():obstaculo(false),jugadores(0),fantasmas(0),disparada(false){};
-      Celda(bool obs,int jug,int fan,bool dis):obstaculo(obs),jugadores(jug),fantasmas(fan),disparada(dis){};
-      void resetear(){
-          jugadores = 0;
-          fantasmas = 0;
-          disparada = false;
-      }
-  };
-  Celda** tablero;
-  int tamano;
-  linear_set<Pos> pos_disparadas;
+    struct Celda{
+        bool obstaculo;
+        int jugadores;
+        int fantasmas;
+        bool disparada;
+        Celda():obstaculo(false),jugadores(0),fantasmas(0),disparada(false){};
+        Celda(bool obs,int jug,int fan,bool dis):obstaculo(obs),jugadores(jug),fantasmas(fan),disparada(dis){};
+        bool operator==(const Celda& celda) const{
+            return obstaculo == celda.obstaculo && jugadores == celda.jugadores && fantasmas == celda.fantasmas && disparada == celda.disparada;
+        }
+        void resetear(){
+            jugadores = 0;
+            fantasmas = 0;
+            disparada = false;
+        }
+    };
+    Celda** tablero;
+    int tamano;
+    linear_set<Pos> pos_disparadas;
 
-  bool iEsPosValida(Pos pos) const;
+    bool iEsPosValida(Pos pos) const;
 
 
 };
