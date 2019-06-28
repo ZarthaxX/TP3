@@ -166,13 +166,99 @@ void ExtremeExorcism::siguienteRonda(dataJ* punteroJugador) {
 	}
 	setearMapa();
 }
-
-void ExtremeExorcism::pasar()
-{
+void ExtremeExorcism::pasar() {
+	accionarDemasJugadoresYFantasmas(true, "");
 }
+void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ){
+	for (auto p : jugadoresV){
+		if(p->nombre != nombreJ || pasarJug == true){
+			p->accionesJ->push_back(Evento(p->pos,p->dir,false));
 
-void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a)
-{
+		}
+	}
+
+	fantasmasVivosObs.clear();
+	for(auto punteroF : fantasmasV){
+	    if(punteroF->accionActual == punteroF->accionFinal){ //chequear que haga lo que tiene que hacer
+
+	        punteroF->accionActual = punteroF->accionInicial;
+	    }
+	    Evento a = *(punteroF->accionActual);
+
+	    (punteroF->accionActual)++; // avanzo a la siguiente accion
+
+        if(a.pos != punteroF->pos){
+
+            _habitacion.mover(false, punteroF->pos, a.dir);
+
+        }else if (a.dispara){
+
+            _habitacion.disparar(false, a.pos, a.dir);
+        }
+
+        punteroF->pos = a.pos;
+        punteroF->dir = a.dir;
+        fantasmasVivosObs.push_back(PosYDir(punteroF->pos,punteroF->dir));
+
+	}
+
+	auto itJugV = jugadoresV.begin();
+
+	while(itJugV != jugadoresV.end()){
+	    if(!_habitacion.estaVivo(true, (*itJugV)->pos)){
+            (*itJugV)->vivo = false;
+            auto copia = itJugV;
+            itJugV++;
+            jugadoresVivosObs.erase((*copia)->jugadorObs);
+            jugadoresV.erase(copia);
+	    }else{
+            (*((*itJugV)->jugadorObs)).second.dir=(*itJugV) -> dir ; // accedo a la tercera posicion de la tupla para cambiar su direccion en jugadores Observable
+            (*((*itJugV)->jugadorObs)).second.pos=(*itJugV) -> pos ; // accedo a la segunda posicion de la tupla para cambiar su posicion en jugadores vivos Observables
+	    }
+	}
+
+
+}
+void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
+    dataJ* punteroJ = jugadoresPorNombre[j]; //significado(jugadoresPorNombre, j)
+    if(a == MABAJO || a== MARRIBA || a== MDERECHA || a==MIZQUIERDA) {
+
+        if (_habitacion.esMovValido(punteroJ->pos, direccion(a))) {
+            _habitacion.mover(true, punteroJ->pos, direccion(a));
+            punteroJ->pos = _habitacion.adyacente(punteroJ->pos, direccion(a));
+            punteroJ->dir = direccion(a);
+            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos, punteroJ->dir, false));
+        } else {
+            punteroJ->dir = direccion(a);
+            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos, punteroJ->dir, false));
+
+        }
+
+
+    } else{
+        if(a==DISPARAR){
+            _habitacion.disparar(true, punteroJ-> pos, punteroJ->dir);
+            list<dataF*>::iterator itFanV = fantasmasV.begin();
+            while(itFanV != fantasmasV.end()){
+                if(_habitacion.estaVivo(false, (*itFanV)->pos)){
+                    if((*itFanV)->id == _fantasmas.size()-1){
+                        siguienteRonda(punteroJ);
+                        return
+                    }
+                    list<dataF*>::iterator copia = itFanV;
+                    itFanV++;
+                    fantasmasV.erase(copia);
+
+                }
+            }
+            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
+
+        }else{
+            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir, false));
+        }
+    }
+    accionarDemasJugadoresYFantasmas(false, punteroJ->nombre);
+
 }
 
 list<pair<Jugador, PosYDir>> ExtremeExorcism::posicionJugadores() const
