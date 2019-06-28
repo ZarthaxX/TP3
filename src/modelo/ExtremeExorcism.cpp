@@ -27,7 +27,6 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 {
 	this->ctx = ctx;
 
-//Adaptar a lo que nos pasan, lista de accion a lista de evento
 	PosYDir fantasma_actual = f_init;
 	accionesF.push_back({ Evento(f_init.pos,f_init.dir,false) });
 
@@ -46,6 +45,25 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 			accionesF.front().push_back(Evento(fantasma_actual.pos, fantasma_actual.dir, false));
 		}
 	}
+
+    list<Evento> accionesInvertidas = inversa(accionesF.front());
+
+    int i = 5;
+    while (i > 0) {
+        accionesF.front().push_back(Evento(accionesF.front().back().pos, accionesF.front().back().dir, false));
+        i -= 1;
+    }
+
+    auto itAccionInv = accionesInvertidas.begin();
+    while (itAccionInv != accionesInvertidas.end()) {
+        accionesF.front().push_back(*itAccionInv);
+        itAccionInv++;
+    }
+    i = 5;
+    while (i > 0) {
+        accionesF.front().push_back(Evento(f_init.pos,f_init.dir,false));
+        i -= 1;
+    }
 
 	_fantasmas.push_back(
 		dataF(
