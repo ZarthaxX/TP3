@@ -78,7 +78,7 @@ private:
         T* definicion;
         set<string>::iterator itClave;
 
-        Nodo(set<string>& c) : siguientes(256, NULL), definicion(NULL), itClave(c.begin()) {};
+        Nodo(set<string>& c) : siguientes(256, NULL), definicion(NULL), itClave(c.end()) {};
 //        Nodo(T* def) : siguientes(256, NULL), definicion(def) {};
     };
 
@@ -123,14 +123,18 @@ private:
             // Borro la definicion y su clave del conjunto _claves
             borradoRecursivoSiguientes(n->siguientes);
             delete n->definicion;
-            _claves.erase(n->itClave);
+            if(n->itClave != _claves.end()){
+                _claves.erase(n->itClave);
+            }
             delete n;
         }
     };
 
     void borradoRecursivoSiguientes(vector<Nodo*> s) {
-        for (Nodo* n : s){
-            borradoRecursivo(n);
+        for (Nodo* n : s) {
+            if (n) {
+                borradoRecursivo(n);
+            }
         }
     };
 
