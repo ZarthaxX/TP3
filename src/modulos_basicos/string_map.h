@@ -86,8 +86,6 @@ private:
     set<string> _claves;
 
     Nodo* copiadoRecursivo(Nodo* n) {
-        // COPIAR CLAVES AL CONJUNTO
-
         // Si n existe
         if (n != NULL){
             // Creo un nuevo nodo
@@ -96,7 +94,8 @@ private:
             // y apunto el iterador del nodo a la clave
             if (n->definicion != NULL){
                 nuevo->definicion = new T(*(n->definicion));
-                nuevo->itClave = _claves.insert(n->itClave);
+                string nuevaClave = *(n->itClave);
+                nuevo->itClave = _claves.insert(nuevaClave).first;
             }
             //Copio recursivamente los siguientes
             for (int i = 0; i < 256; ++i) {

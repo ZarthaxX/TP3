@@ -47,13 +47,16 @@ void string_map<T>::Definir(const string &clave, T valor) {
 
 template <typename T>
 bool string_map<T>::Definido(const string &clave) const{
+    if (_raiz == NULL) {
+        return false;
+    }
     Nodo* actual = _raiz;
     int i = 0;
     while (i < clave.size() and actual->siguientes[int(clave[i])] != NULL) {
         actual = actual->siguientes[int(clave[i])];
         i++;
     }
-    if (i == clave.size() and actual->significado != NULL){
+    if (i == clave.size() and actual->definicion != NULL){
         return true;
     } else {
         return false;
