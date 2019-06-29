@@ -180,15 +180,6 @@ TEST(EE, MoverJugador) {
                  ".#.\n"
                  "..w\n", ee);
 
-  ee.ejecutarAccion("1", MABAJO);
-  VALIDAR_ESTADO(2, ".R.\n"
-                 ".#D\n"
-                 "..w\n", ee);
-
-  ee.ejecutarAccion("0", DISPARAR);
-  VALIDAR_ESTADO(2, ".R.\n"
-                    ".#D\n"
-                    "..w\n", ee);
 
   delete l;
 }
@@ -344,17 +335,17 @@ TEST(EE, PasarConRepeticion) {
   VALIDAR_ESTADO(1, "..e\n"
                     ".#.\n"
                     "W..\n", ee);
- 
+
   ee.pasar();
   VALIDAR_ESTADO(1, "..e\n"
                    ".#.\n"
                    "W..\n", ee);
-  
+
   ee.pasar();
   VALIDAR_ESTADO(1, "...\n"
                     ".#e\n"
                     "W..\n", ee);
-  
+
   ee.pasar();
   VALIDAR_ESTADO(1, "...\n"
                     ".#.\n"
@@ -366,16 +357,17 @@ TEST(EE, PasarConRepeticion) {
                       ".#.\n"
                       "W.e\n", ee);
   }
- 
+
   ee.pasar();
   VALIDAR_ESTADO(1, "...\n"
                     ".#.\n"
                     "W.w\n", ee);
-  
+
   ee.pasar();
   VALIDAR_ESTADO(1, "...\n"
                     ".#w\n"
                     "W..\n", ee);
+
   delete l;
 }
 
@@ -451,7 +443,7 @@ TEST(EE, FantasmaMataJugadoresEnMismaPosicion) {
   EXPECT_TRUE(ee.jugadorVivo("1"));
   EXPECT_EQ(ee.posicionJugador("0"), PosYDir({1, 0}, ARRIBA));
   EXPECT_EQ(ee.posicionJugador("1"), PosYDir({1, 0}, DERECHA));
-  
+
   ee.pasar();
   EXPECT_FALSE(ee.jugadorVivo("0"));
   EXPECT_FALSE(ee.jugadorVivo("1"));

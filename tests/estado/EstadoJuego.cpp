@@ -124,17 +124,5 @@ void EstadoJuego::verificar(const ExtremeExorcism &ee) {
   }
 
   EXPECT_EQ(pos_j, js);
-  EXPECT_EQ(pos_f, fs);
-  EXPECT_EQ(*pos_fe, ee.posicionEspecial());
-
-  for (Jugador j : j_vivos) {
-    EXPECT_TRUE(ee.jugadorVivo(j));
-  }
-
-  for (Jugador j : j_muertos) {
-    EXPECT_FALSE(ee.jugadorVivo(j));
-  }
-
-  EXPECT_EQ(h, ee.habitacion());
 }
 
