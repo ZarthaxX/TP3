@@ -146,11 +146,11 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 	_fantasmas.push_back(
 		dataF(
 			_fantasmas.size(),
-           		accionesF.front().front().pos,
-            		accionesF.front().front().dir,
-            		next(accionesF.front().begin()),
-            		accionesF.front().begin(),
-            		accionesF.front().end()
+           		accionesF.back().front().pos,
+            		accionesF.back().front().dir,
+            		next(accionesF.back().begin()),
+            		accionesF.back().begin(),
+            		accionesF.back().end()
 		)
 	);
 
