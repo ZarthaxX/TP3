@@ -146,11 +146,11 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 	_fantasmas.push_back(
 		dataF(
 			_fantasmas.size(),
-			punteroJugador->pos,
-			punteroJugador->dir,
-			prev(accionesF.end())->begin(),
-			prev(accionesF.end())->begin(),
-			prev(prev(accionesF.end())->end())
+           		accionesF.front().front().pos,
+            		accionesF.front().front().dir,
+            		next(accionesF.front().begin()),
+            		accionesF.front().begin(),
+            		accionesF.front().end()
 		)
 	);
 
@@ -266,7 +266,8 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
 
     } else{
         if(a==DISPARAR){
-            auto itFanV = fantasmasV.begin();
+            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
+	    auto itFanV = fantasmasV.begin();
             while(itFanV != fantasmasV.end()){
                 if(_habitacion.estaVivo(false, (*itFanV)->pos)){
                     if((*itFanV)->id == _fantasmas.size()-1){
