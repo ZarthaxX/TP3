@@ -113,7 +113,7 @@ void string_map<T>::Borrar(const string& clave) {
         delete actual->definicion;
         actual->definicion = NULL;
         _claves.erase(actual->itClave);
-        actual->itClave = _claves.begin();
+        actual->itClave = _claves.end();
     } else {
         // Si no, borro desde el ultimo no relevante
         borradoRecursivo(borrarDesde);
