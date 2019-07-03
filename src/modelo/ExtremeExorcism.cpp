@@ -407,7 +407,9 @@ Evento ExtremeExorcism::invertir(const Evento & evento)
 }
 
 
+
 void ExtremeExorcism::debug() const{
+    cerr << "******************************* ExtremeExorcism ***********************" << endl;
     cerr << "***jugadoresVivos***" << endl;
     map<int,string> dir_s = {{ARRIBA,"ARRIBA"},{ABAJO,"ABAJO"},{DERECHA,"DERECHA"},{IZQUIERDA,"IZQUIERDA"}};
     for(auto jv : jugadoresV){
@@ -417,6 +419,19 @@ void ExtremeExorcism::debug() const{
         cerr << "Direccion: " << dir_s[j.dir] << endl;
         cerr << "Vivo: " << (j.vivo ? "Si" : "No")  << endl;
         cerr << "Ultima accion: ";if((*j.accionesJ).size() > 0)cerr << (*j.accionesJ).back();else cerr << "None";cerr << endl;
-        cerr << "Jugador obs: nombre " << (*j.jugadorObs).first << " posYdir " << (*j.jugadorObs).second << endl;
+        cerr << "JugadorObs: Nombre " << (*j.jugadorObs).first << " Dir " <<  dir_s[(*j.jugadorObs).second.dir] << " Posicion X " << (*j.jugadorObs).second.pos.first << " Y " << (*j.jugadorObs).second.pos.second << endl;
     }
+
+    cerr << "***fantasmasVivos***" << endl;
+    for(auto fv : fantasmasV){
+        auto f = *fv;
+        cerr << "ID: " << f.id << endl;
+        cerr << "Posicion: X " << f.pos.first << " Y " << f.pos.second << endl;
+        cerr << "Direccion: " << dir_s[f.dir] << endl;
+        cerr << "AccionActual: " << (*f.accionActual) << endl;
+        cerr << "AccionInicial: " << (*f.accionInicial) << endl;
+        cerr << "AccionFinal: " << (*f.accionFinal) << endl;
+    }
+    cerr << "**************************************************************************" << endl;
 }
+
