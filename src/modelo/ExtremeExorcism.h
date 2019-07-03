@@ -63,6 +63,7 @@ public:
     //Agregada por nosotros
     const list<Evento> &acciones(string jug) const;
 
+    void debug() const;
 private:
 
 // Estructura
