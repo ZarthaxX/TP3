@@ -242,14 +242,3 @@ bool Habitacion::operator==(const Habitacion &h) const {
     return pos_disparadas == h.pos_disparadas;
 };
 // Completar
-
-void Habitacion::resetear_turno() {
-    pos_disparadas = linear_set<Pos>();
-
-    for(int i = 0;i < tamano;i++){
-        for (int j = 0; j < tamano; j++) {
-            tablero[i][j].disparada = false;
-        }
-    }
-
-}
