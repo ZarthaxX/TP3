@@ -5,8 +5,8 @@
 #include "Habitacion.h"
 #include "TiposJuego.h"
 #include "modulos_basicos/linear_map.h"
+#include "modulos_basicos/string_map.h"
 #include <list>
-#include <map>
 #include <set>
 #include <string>
 #include <utility>
@@ -104,7 +104,7 @@ private:
 	Contexto* ctx;
 
 	Habitacion _habitacion;
-	map<string, vector<dataJ>::iterator>jugadoresPorNombre;
+	string_map<vector<dataJ>::iterator>jugadoresPorNombre;
 	list<vector<dataJ>::iterator> jugadoresV;
 	vector<dataJ> _jugadores;
 	list<list<dataF>::iterator> fantasmasV;

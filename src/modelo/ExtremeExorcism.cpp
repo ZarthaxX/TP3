@@ -19,7 +19,7 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	_fantasmas(list<dataF>()),
 	jugadoresVivosObs(list<pair<string, PosYDir>>()),
 	fantasmasVivosObs(list<PosYDir>()),
-	jugadoresPorNombre(map<string, vector<dataJ>::iterator>()),
+	jugadoresPorNombre(string_map<vector<dataJ>::iterator>()),
 	accionesF(list<Fantasma>()),
 	accionesJ(vector<list<Evento>>()),
 	jugadoresV(list<vector<dataJ>::iterator>()),
@@ -109,7 +109,7 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	for(auto it = _jugadores.begin();it != _jugadores.end();it++,it2++,it3++){
 
 		jugadoresV.push_back(it);
-		jugadoresPorNombre[it->nombre] = it;
+		jugadoresPorNombre.Definir(it->nombre, it);
 		it->accionesJ = it2;
 		it->jugadorObs = it3;
 	}
@@ -176,11 +176,7 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 		itFan++;
 	}
 
-	set<Jugador> set_jugadores;
-	for(auto it = jugadoresPorNombre.begin(); it != jugadoresPorNombre.end(); ++it) {
-		set_jugadores.insert(it->first);
-	}
-	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(set_jugadores, accionesF, _habitacion);
+	map<Jugador, PosYDir> pos_dir = ctx->localizar_jugadores(jugadoresPorNombre.Claves(), accionesF, _habitacion);
 	auto itJug = _jugadores.begin();
 	jugadoresVivosObs = list<pair<string, PosYDir>>();
 
@@ -250,7 +246,7 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 
 }
 void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
-    vector<dataJ>::iterator punteroJ = jugadoresPorNombre[j]; //significado(jugadoresPorNombre, j)
+    vector<dataJ>::iterator punteroJ = jugadoresPorNombre.Significado(j); //significado(jugadoresPorNombre, j)
 
     if(a == MABAJO || a == MARRIBA || a == MDERECHA || a== MIZQUIERDA) {
 
@@ -331,7 +327,7 @@ set<Pos> ExtremeExorcism::posicionesDisparadas() const
 
 bool ExtremeExorcism::jugadorVivo(Jugador j) const
 {
-	return jugadoresPorNombre.at(j)->vivo;
+	return jugadoresPorNombre.Significado(j)->vivo;
 }
 
 const Habitacion & ExtremeExorcism::habitacion() const
@@ -341,16 +337,12 @@ const Habitacion & ExtremeExorcism::habitacion() const
 
 PosYDir ExtremeExorcism::posicionJugador(Jugador j) const
 {
-	return PosYDir(jugadoresPorNombre.at(j)->pos,jugadoresPorNombre.at(j)->dir);
+	return PosYDir(jugadoresPorNombre.Significado(j)->pos,jugadoresPorNombre.Significado(j)->dir);
 }
 
 const set<Jugador>& ExtremeExorcism::jugadores()
 {
-    jugadores_set.clear();
-    for(auto it = jugadoresPorNombre.begin(); it != jugadoresPorNombre.end(); ++it) {
-        jugadores_set.insert(it->first);
-    }
-	return jugadores_set;
+	return jugadoresPorNombre.Claves();
 }
 
 const list<Fantasma>& ExtremeExorcism::fantasmas() const
@@ -360,7 +352,7 @@ const list<Fantasma>& ExtremeExorcism::fantasmas() const
 
 const list<Evento>& ExtremeExorcism::acciones(string jug) const
 {
-	return *jugadoresPorNombre.at(jug)->accionesJ;
+	return *jugadoresPorNombre.Significado(jug)->accionesJ;
 }
 
 void ExtremeExorcism::setearMapa() {
