@@ -432,7 +432,7 @@ void ExtremeExorcism::debug() const{
         cerr << "Direccion: " << dir_s[f.dir] << endl;
         cerr << "AccionActual: " << (*f.accionActual) << endl;
         cerr << "AccionInicial: " << (*f.accionInicial) << endl;
-        cerr << "AccionFinal: " << (*f.accionFinal) << endl;
+        cerr << "AccionFinal: " << *prev(f.accionFinal) << endl;
     }
     cerr << "**************************************************************************" << endl;
 }
