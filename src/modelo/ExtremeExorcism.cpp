@@ -420,7 +420,7 @@ void ExtremeExorcism::debug() const{
         cerr << "Direccion: " << dir_s[j.dir] << endl;
         cerr << "Vivo: " << (j.vivo ? "Si" : "No")  << endl;
         cerr << "Ultima accion: ";if((*j.accionesJ).size() > 0)cerr << (*j.accionesJ).back();else cerr << "None";cerr << endl;
-        cerr << "JugadorObs: Nombre " << (*j.jugadorObs).first << " Dir " <<  dir_s[(*j.jugadorObs).second.dir] << " Posicion X " << (*j.jugadorObs).second.pos.first << " Y " << (*j.jugadorObs).second.pos.second << endl;
+        cerr << "JugadorObs: Nombre " << (*j.jugadorObs).first << " PosYDir " <<  (*j.jugadorObs).second << endl;
     }
 
     cerr << "*************fantasmasVivos*************" << endl;
