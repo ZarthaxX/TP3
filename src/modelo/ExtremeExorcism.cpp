@@ -197,7 +197,7 @@ void ExtremeExorcism::pasar() {
 void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ){
 
     _habitacion.resetear_turno();
-    
+
 	for (auto p : jugadoresV){
 		if(p->nombre != nombreJ || pasarJug == true){
 			p->accionesJ->push_back(Evento(p->pos,p->dir,false));
@@ -323,9 +323,9 @@ list<PosYDir> ExtremeExorcism::disparosFantasmas() const
 	return fan;
 }
 
-set<Pos> ExtremeExorcism::posicionesDisparadas() const
+const linear_set<Pos>& ExtremeExorcism::posicionesDisparadas() const
 {
-	return set<Pos>();
+	return _habitacion.posDisparadasFantasma();
 }
 
 bool ExtremeExorcism::jugadorVivo(Jugador j) const
