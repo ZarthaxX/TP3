@@ -410,9 +410,10 @@ Evento ExtremeExorcism::invertir(const Evento & evento)
 
 void ExtremeExorcism::debug() const{
     cerr << "******************************* ExtremeExorcism ***********************" << endl;
-    cerr << "***jugadoresVivos***" << endl;
+    cerr << "*************jugadoresVivos*************" << endl;
     map<int,string> dir_s = {{ARRIBA,"ARRIBA"},{ABAJO,"ABAJO"},{DERECHA,"DERECHA"},{IZQUIERDA,"IZQUIERDA"}};
     for(auto jv : jugadoresV){
+        cerr << "****** Jugador ******" << endl;
         auto j = *jv;
         cerr << "Nombre: " << j.nombre << endl;
         cerr << "Posicion: X " << j.pos.first << " Y " << j.pos.second << endl;
@@ -422,8 +423,9 @@ void ExtremeExorcism::debug() const{
         cerr << "JugadorObs: Nombre " << (*j.jugadorObs).first << " Dir " <<  dir_s[(*j.jugadorObs).second.dir] << " Posicion X " << (*j.jugadorObs).second.pos.first << " Y " << (*j.jugadorObs).second.pos.second << endl;
     }
 
-    cerr << "***fantasmasVivos***" << endl;
+    cerr << "*************fantasmasVivos*************" << endl;
     for(auto fv : fantasmasV){
+        cerr << "****** Fantasma ******" << endl;
         auto f = *fv;
         cerr << "ID: " << f.id << endl;
         cerr << "Posicion: X " << f.pos.first << " Y " << f.pos.second << endl;
@@ -434,4 +436,5 @@ void ExtremeExorcism::debug() const{
     }
     cerr << "**************************************************************************" << endl;
 }
+
 
