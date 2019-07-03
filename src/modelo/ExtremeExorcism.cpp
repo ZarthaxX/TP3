@@ -196,12 +196,6 @@ void ExtremeExorcism::pasar() {
 }
 void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ){
 
-	if(jugadoresV.size() == 0){
-		fantasmasV.clear();
-	}
-
-    _habitacion.resetear_turno();
-
 	for (auto p : jugadoresV){
 		if(p->nombre != nombreJ || pasarJug == true){
 			p->accionesJ->push_back(Evento(p->pos,p->dir,false));
