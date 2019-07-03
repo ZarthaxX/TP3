@@ -69,28 +69,28 @@ void Habitacion::debug() const{
     cerr << "FANTASMAS" << endl;
     for(int i = 0;i < tamano;i++){
         for(int x = 0;x < tamano;x++){
-            cerr << tablero[i][x].fantasmas << " ";
+            cerr << tablero[x][i].fantasmas << " ";
         }
         cerr << endl;
     }
     cerr << "JUGADORES" << endl;
     for(int i = 0;i < tamano;i++){
         for(int x = 0;x < tamano;x++){
-            cerr << tablero[i][x].jugadores << " ";
+            cerr << tablero[x][i].jugadores << " ";
         }
         cerr << endl;
     }
     cerr << "OBSTACULOS" << endl;
     for(int i = 0;i < tamano;i++){
         for(int x = 0;x < tamano;x++){
-            cerr << tablero[i][x].obstaculo << " ";
+            cerr << tablero[x][i].obstaculo << " ";
         }
         cerr << endl;
     }
     cerr << "DISPARADOS" << endl;
     for(int i = 0;i < tamano;i++){
         for(int x = 0;x < tamano;x++){
-            cerr << tablero[i][x].disparada << " ";
+            cerr << tablero[x][i].disparada << " ";
         }
         cerr << endl;
     }
@@ -242,3 +242,14 @@ bool Habitacion::operator==(const Habitacion &h) const {
     return pos_disparadas == h.pos_disparadas;
 };
 // Completar
+
+void Habitacion::resetear_turno() {
+    pos_disparadas = linear_set<Pos>();
+
+    for(int i = 0;i < tamano;i++){
+        for (int j = 0; j < tamano; j++) {
+            tablero[i][j].disparada = false;
+        }
+    }
+
+}
