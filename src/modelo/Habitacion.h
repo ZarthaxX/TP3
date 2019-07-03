@@ -46,7 +46,7 @@ public:
 
     bool operator==(const Habitacion&) const;
 
-    void debug();
+    void debug() const;
 private:
     struct Celda{
         bool obstaculo;

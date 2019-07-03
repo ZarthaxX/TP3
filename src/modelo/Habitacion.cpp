@@ -65,7 +65,7 @@ Habitacion string_to_hab(string s) {
     return Habitacion(height, occupied);
 }
 
-void Habitacion::debug() {
+void Habitacion::debug() const{
     cerr << "FANTASMAS" << endl;
     for(int i = 0;i < tamano;i++){
         for(int x = 0;x < tamano;x++){
