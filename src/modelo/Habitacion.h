@@ -42,6 +42,8 @@ public:
 
     void resetear();
 
+    void resetear_turno();
+
     unsigned int tam() const;
 
     bool operator==(const Habitacion&) const;
