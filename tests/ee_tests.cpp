@@ -508,6 +508,8 @@ TEST(EE, JugadorEsquivaDisparo) {
   VALIDAR_ESTADO(1, "...\n"
                     "W#.\n"
                     ".q.\n", ee);
+
+  delete l;
 }
 
 // Disparo jugador bloqueado por mapa
@@ -894,6 +896,8 @@ TEST(EE, NingunFantasmaDispara) {
     EXPECT_EQ(ee.disparosFantasmas().size(), 0);
     ee.pasar();
   }
+
+  delete l;
 }
 
 // Un fantasma dispara
@@ -914,6 +918,8 @@ TEST(EE, UnFantasmaDispara) {
   }
 
   EXPECT_EQ(ee.disparosFantasmas().size(), 1);
+
+  delete l;
 }
 
 // Dos fantasmas disparan
