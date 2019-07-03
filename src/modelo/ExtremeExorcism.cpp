@@ -90,7 +90,7 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 				pos_dir[j].dir)
 			}
 		);
-		accionesJ.push_back(list<Evento>());
+		accionesJ.push_back({Evento(pos_dir[j].pos, pos_dir[j].dir, false)});
 		_jugadores.emplace_back(
 			dataJ(
 				j,
@@ -120,13 +120,14 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 	fantasmasV.clear();
 	jugadoresV.clear();
-	list<Evento> accionesFantasma = *(punteroJugador->accionesJ);
+	list<Evento> accionesFantasma = *punteroJugador->accionesJ;
 	int i = 5;
 	while (i > 0) {
 		accionesFantasma.push_back(Evento(punteroJugador->pos, punteroJugador->dir, false));
 		i -= 1;
 	}
 	list<Evento> accionesInvertidas = inversa(*(punteroJugador->accionesJ));
+	accionesInvertidas.pop_back(); // Saca la ultima accion que representa la posicion inicial
 	auto itAccionInv = accionesInvertidas.begin();
 	while (itAccionInv != accionesInvertidas.end()) {
 		accionesFantasma.push_back(*itAccionInv);
@@ -147,11 +148,11 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 	_fantasmas.push_back(
 		dataF(
 			_fantasmas.size(),
-           		accionesF.back().front().pos,
-            		accionesF.back().front().dir,
-            		next(accionesF.back().begin()),
-            		accionesF.back().begin(),
-            		accionesF.back().end()
+            (*punteroJugador->accionesJ).front().pos,
+            (*punteroJugador->accionesJ).front().dir,
+            accionesF.back().begin(),
+            accionesF.back().begin(),
+            accionesF.back().end()
 		)
 	);
 
@@ -169,7 +170,7 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 		itFan->accionActual = itFan->accionInicial;
 		itFan->pos = itFan->accionActual->pos;
 		itFan->dir = itFan->accionActual->dir;
-//		itFan->accionActual++;
+		itFan->accionActual++;
 		fantasmasV.push_back(itFan);
 		fantasmasVivosObs.push_back({ itFan->pos,itFan->dir });
 		itFan++;
