@@ -118,6 +118,8 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 }
 
 void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
+	fantasmasV.clear();
+	jugadoresV.clear();
 	list<Evento> accionesFantasma = *(punteroJugador->accionesJ);
 	int i = 5;
 	while (i > 0) {
@@ -141,7 +143,6 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 		);
 		i -= 1;
 	}
-	auto itFantasmas = _fantasmas.begin();
 	accionesF.push_back(accionesFantasma);
 	_fantasmas.push_back(
 		dataF(
@@ -168,7 +169,7 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 		itFan->accionActual = itFan->accionInicial;
 		itFan->pos = itFan->accionActual->pos;
 		itFan->dir = itFan->accionActual->dir;
-		itFan->accionActual++;
+//		itFan->accionActual++;
 		fantasmasV.push_back(itFan);
 		fantasmasVivosObs.push_back({ itFan->pos,itFan->dir });
 		itFan++;
@@ -266,20 +267,19 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
 
     } else{
         if(a==DISPARAR){
-            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
-	    auto itFanV = fantasmasV.begin();
-            while(itFanV != fantasmasV.end()){
-                if(_habitacion.estaVivo(false, (*itFanV)->pos)){
-                    if((*itFanV)->id == _fantasmas.size()-1){
-                        siguienteRonda(punteroJ);
-                        return;
-                    }
-                    auto copia = itFanV;
-                    itFanV++;
-                    fantasmasV.erase(copia);
-                }
-            }
-            (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
+			(punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
+			auto itFanV = fantasmasV.begin();
+			while(itFanV != fantasmasV.end()){
+				if(_habitacion.estaVivo(false, (*itFanV)->pos)){
+					if((*itFanV)->id == _fantasmas.size()-1){
+						siguienteRonda(punteroJ);
+						return;
+					}
+					auto copia = itFanV;
+					itFanV++;
+					fantasmasV.erase(copia);
+				}
+			}
 
         }else{
             (punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir, false));
