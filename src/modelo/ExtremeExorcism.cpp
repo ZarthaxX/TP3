@@ -406,3 +406,17 @@ Evento ExtremeExorcism::invertir(const Evento & evento)
 	return evento_inv;
 }
 
+
+void ExtremeExorcism::debug() const{
+    cerr << "***jugadoresVivos***" << endl;
+    map<int,string> dir_s = {{ARRIBA,"ARRIBA"},{ABAJO,"ABAJO"},{DERECHA,"DERECHA"},{IZQUIERDA,"IZQUIERDA"}};
+    for(auto jv : jugadoresV){
+        auto j = *jv;
+        cerr << "Nombre: " << j.nombre << endl;
+        cerr << "Posicion: X " << j.pos.first << " Y " << j.pos.second << endl;
+        cerr << "Direccion: " << dir_s[j.dir] << endl;
+        cerr << "Vivo: " << (j.vivo ? "Si" : "No")  << endl;
+        cerr << "Ultima accion: ";if((*j.accionesJ).size() > 0)cerr << (*j.accionesJ).back();else cerr << "None";cerr << endl;
+        cerr << "Jugador obs: nombre " << (*j.jugadorObs).first << " posYdir " << (*j.jugadorObs).second << endl;
+    }
+}
