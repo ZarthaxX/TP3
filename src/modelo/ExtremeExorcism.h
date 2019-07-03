@@ -43,7 +43,7 @@ public:
     list<PosYDir> disparosFantasmas() const;
 
     //posPorDisparosEnRonda
-    set<Pos> posicionesDisparadas() const;
+    const linear_set<Pos>& posicionesDisparadas() const;
 
     //estaVivo?
     bool jugadorVivo(Jugador j) const;
