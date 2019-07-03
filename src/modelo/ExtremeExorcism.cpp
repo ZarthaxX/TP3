@@ -196,6 +196,8 @@ void ExtremeExorcism::pasar() {
 }
 void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador nombreJ){
 
+    _habitacion.resetear_turno();
+    
 	for (auto p : jugadoresV){
 		if(p->nombre != nombreJ || pasarJug == true){
 			p->accionesJ->push_back(Evento(p->pos,p->dir,false));
@@ -245,7 +247,6 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 
 
 }
-
 void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
     vector<dataJ>::iterator punteroJ = jugadoresPorNombre.Significado(j); //significado(jugadoresPorNombre, j)
 
