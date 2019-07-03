@@ -67,28 +67,28 @@ Habitacion string_to_hab(string s) {
 
 void Habitacion::debug() const{
     cerr << "FANTASMAS" << endl;
-    for(int i = 0;i < tamano;i++){
+    for(int i = tamano-1;i >= 0;i--){
         for(int x = 0;x < tamano;x++){
             cerr << tablero[x][i].fantasmas << " ";
         }
         cerr << endl;
     }
     cerr << "JUGADORES" << endl;
-    for(int i = 0;i < tamano;i++){
+    for(int i = tamano-1;i >= 0;i--){
         for(int x = 0;x < tamano;x++){
             cerr << tablero[x][i].jugadores << " ";
         }
         cerr << endl;
     }
     cerr << "OBSTACULOS" << endl;
-    for(int i = 0;i < tamano;i++){
+    for(int i = tamano-1;i >= 0;i--){
         for(int x = 0;x < tamano;x++){
             cerr << tablero[x][i].obstaculo << " ";
         }
         cerr << endl;
     }
     cerr << "DISPARADOS" << endl;
-    for(int i = 0;i < tamano;i++){
+    for(int i = tamano-1;i >= 0;i--){
         for(int x = 0;x < tamano;x++){
             cerr << tablero[x][i].disparada << " ";
         }
