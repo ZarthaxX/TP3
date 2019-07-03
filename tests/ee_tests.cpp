@@ -947,4 +947,6 @@ TEST(EE, DosFantasmasDisparan) {
   EXPECT_EQ(ee.disparosFantasmas().size(), 0);
   ee.pasar();
   EXPECT_EQ(ee.disparosFantasmas().size(), 2);
+
+  delete l;
 }
