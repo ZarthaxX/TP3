@@ -245,6 +245,7 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 
 
 }
+
 void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
     vector<dataJ>::iterator punteroJ = jugadoresPorNombre.Significado(j); //significado(jugadoresPorNombre, j)
 
@@ -265,16 +266,17 @@ void ExtremeExorcism::ejecutarAccion(Jugador j, Accion a) {
     } else{
         if(a==DISPARAR){
 			(punteroJ->accionesJ)->push_back(Evento(punteroJ->pos,punteroJ->dir,true));
+			_habitacion.disparar(true,punteroJ->pos,punteroJ->dir);
 			auto itFanV = fantasmasV.begin();
 			while(itFanV != fantasmasV.end()){
-				if(_habitacion.estaVivo(false, (*itFanV)->pos)){
+				if(!_habitacion.estaVivo(false, (*itFanV)->pos)){
 					if((*itFanV)->id == _fantasmas.size()-1){
 						siguienteRonda(punteroJ);
 						return;
 					}
-					auto copia = itFanV;
+					itFanV = fantasmasV.erase(itFanV);
+				}else{
 					itFanV++;
-					fantasmasV.erase(copia);
 				}
 			}
 
