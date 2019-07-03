@@ -27,6 +27,8 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 {
 	this->ctx = ctx;
 
+	acciones_fantasma_inicial = acciones_fantasma;
+
 	PosYDir fantasma_actual = f_init;
 	accionesF.push_back({ Evento(f_init.pos,f_init.dir,false) });
 
@@ -241,6 +243,13 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 
 			itJugV++;
 	    }
+	}
+
+	if(jugadoresV.size() == 0){
+	    _habitacion.resetear();
+	    PosYDir f_init(accionesF.front().front().pos,accionesF.front().front().dir);
+
+        (*this) = ExtremeExorcism(_habitacion,jugadoresPorNombre.Claves(),f_init,acciones_fantasma_inicial,ctx);
 	}
 
 

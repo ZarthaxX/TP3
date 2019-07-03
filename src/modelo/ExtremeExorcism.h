@@ -113,6 +113,8 @@ private:
 	vector<list<Evento>>accionesJ;
 	list<pair<string, PosYDir>>jugadoresVivosObs;
 	list<PosYDir>fantasmasVivosObs;
+
+	list<Accion>acciones_fantasma_inicial;
 };
 
 #endif
