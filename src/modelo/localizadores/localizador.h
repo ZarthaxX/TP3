@@ -11,6 +11,8 @@ class Localizador {
 public:
   Localizador();
 
+  virtual ~Localizador() = default;
+
   virtual map<Jugador, PosYDir>
   localizar_jugadores(const set<Jugador> &jugadores,
                       const list<Fantasma> &fantasmas, const Habitacion &hab);

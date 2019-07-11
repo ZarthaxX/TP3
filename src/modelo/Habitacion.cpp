@@ -239,6 +239,6 @@ bool Habitacion::operator==(const Habitacion &h) const {
                 return false;
         }
     }
-    return pos_disparadas == h.pos_disparadas;
+    return true;
 };
 // Completar

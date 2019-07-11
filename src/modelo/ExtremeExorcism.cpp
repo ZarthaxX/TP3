@@ -1,17 +1,19 @@
 #include "ExtremeExorcism.h"
-
+#include <cassert>
 // Completar
 
 Dir ExtremeExorcism::direccion(Accion accion) {
 
 	if (accion == MARRIBA)
-			return ARRIBA;
+		return ARRIBA;
 	if (accion == MABAJO)
 		return ABAJO;
 	if (accion == MIZQUIERDA)
 		return IZQUIERDA;
 	if (accion == MDERECHA)
 		return DERECHA;
+
+	assert(false);
 }
 ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f_init, list<Accion> acciones_fantasma, Contexto * ctx) :
 	_habitacion(h),
@@ -26,6 +28,8 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 	fantasmasV(list<list<dataF>::iterator>())
 {
 	this->ctx = ctx;
+
+	acciones_fantasma_inicial = acciones_fantasma;
 
 	PosYDir fantasma_actual = f_init;
 	accionesF.push_back({ Evento(f_init.pos,f_init.dir,false) });
@@ -86,16 +90,15 @@ ExtremeExorcism::ExtremeExorcism(Habitacion h, set<Jugador> jugadores, PosYDir f
 		jugadoresVivosObs.push_back(
 			{
 				j,
-				PosYDir(pos_dir[j].pos,
-				pos_dir[j].dir)
+				PosYDir(pos_dir.find(j)->second.pos, pos_dir.find(j)->second.dir)
 			}
 		);
-		accionesJ.push_back({Evento(pos_dir[j].pos, pos_dir[j].dir, false)});
+		accionesJ.push_back({Evento(pos_dir.find(j)->second.pos, pos_dir.find(j)->second.dir, false)});
 		_jugadores.emplace_back(
 			dataJ(
 				j,
-				pos_dir[j].pos,
-				pos_dir[j].dir,
+				pos_dir.find(j)->second.pos,
+				pos_dir.find(j)->second.dir,
 				true,
 				vector<list<Evento>>::iterator(),//prev(accionesJ.end()),
 				list<pair<string, PosYDir>>::iterator()//prev(jugadoresVivosObs.end())
@@ -182,8 +185,8 @@ void ExtremeExorcism::siguienteRonda(vector<dataJ>::iterator punteroJugador) {
 
 	while (itJug != _jugadores.end()) {
 		itJug->vivo = true;
-		itJug->pos = pos_dir[itJug->nombre].pos;
-		itJug->dir = pos_dir[itJug->nombre].dir;
+		itJug->pos = pos_dir.find(itJug->nombre)->second.pos;
+		itJug->dir = pos_dir.find(itJug->nombre)->second.dir;
 		jugadoresV.push_back(itJug);
 		jugadoresVivosObs.push_back({ itJug->nombre,PosYDir(itJug->pos,itJug->dir)});
 		itJug->jugadorObs = prev(jugadoresVivosObs.end());
@@ -224,7 +227,7 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 
         punteroF->pos = a.pos;
         punteroF->dir = a.dir;
-        fantasmasVivosObs.push_back(PosYDir(punteroF->pos,punteroF->dir));
+        fantasmasVivosObs.push_back(PosYDir(a.pos,a.dir));
 
 	}
 
@@ -242,6 +245,7 @@ void ExtremeExorcism::accionarDemasJugadoresYFantasmas(bool pasarJug, Jugador no
 			itJugV++;
 	    }
 	}
+
 
 
 }

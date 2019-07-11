@@ -13,6 +13,7 @@ public:
   LocalizadorEstatico(map<Jugador, PosYDir>);
   LocalizadorEstatico(map<Ronda, map<Jugador, PosYDir>>);
 
+  ~LocalizadorEstatico() = default;
   map<Jugador, PosYDir>
   localizar_jugadores(const set<Jugador> &jugadores,
                       const list<Fantasma> &fantasmas, const Habitacion &hab);

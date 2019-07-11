@@ -14,6 +14,7 @@ template <typename T>
 string_map<T>& string_map<T>::operator=(const string_map<T>& d) {
     borradoRecursivo(_raiz);
     _raiz = copiadoRecursivo(d._raiz);
+    return *this;
 }
 
 template <typename T>
